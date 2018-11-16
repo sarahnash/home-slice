@@ -7,15 +7,18 @@ Houston.
 
 [DigitalCrafts]:https://www.digitalcrafts.com/
 
+[![Build Status](https://travis-ci.org/sarahnash/home-slice.svg?branch=master)](https://travis-ci.org/sarahnash/home-slice)
+
 ## Project Description
 
-<!-- need to enter a cool project description -->
+HomeSlice serves to fill the gap between locating the home of your dreams and quickly assessing the amenities around it.  For anyone who has done a house search and then opened Google maps to see what's actually around your options, this app meets your needs. Designed for urban dwellers who want to be near a bike path and suburban homesteads that need a grocery store nearby - the house is only the beginning.
 
 ## Technical Requirements
 
 <!-- Requirements of the project and how our project satisfies them -->
 
-- Use at least one JavaScript library that is not jQuery. Examples:
+- JavaScript libraries:
+  - [jQuery.js](https://jquery.com/)
   - [Moment.js](https://momentjs.com/)
   - [Marked](https://marked.js.org/)
   - [jQuery UI](https://jqueryui.com/)
@@ -36,32 +39,28 @@ Houston.
 - Testing Service:
   - [Travis CI](https://travis-ci.org/)
 
-## Workflow Requirements
+## Agile Workflow
 
- <!-- Trello Agile description -->
-
-- [Trello]:https://trello.com/
+- [Trello]:https://trello.com/b/WXf2yM1q/home-slice-workflow
 
 
 ## Learning Objectives
 
-<!-- need to rewrite with better intent of the project -->
-
-By the end of Phase 1 you should have most of the skills necessary to understand
-much of the world of web development (HTML, CSS, JavaScript). The intent with
-these requirements is for each student in the group to use these skills to learn
-something new and use it in a "real world" way. Searching for external resources
-and being able to understand and apply documentation is a big part of software
-development. Whether it is an API, a new JavaScript library, deployment,
-testing, etc. Go learn something new and put those web development skills to
+To have the skills necessary to understand
+much of the world of web development (HTML, CSS, JavaScript). Each student in the group 
+used these skills to learn something new and use it in a "real world" way. 
+Searching for external resources and being able to understand and apply documentation
+is a big part of software development. Whether it is an API, a new JavaScript library,
+deployment, testing, etc. We learned many new things and put our web development skills to
 work!
 
-Another goal of this project is polish / thoroughness. A thorough `README.md`,
+Another goal of this project was polish / thoroughness. A thorough `README.md`,
 testing via Travis CI, deploying to a public web server, thoughtful commit
 messages, following a PR review process, good code organization, etc are all
-signals of quality software development. The end result of this project should
-be a portfolio piece that you are excited to put on your resume and share with
-friends and family: "Hey - look at this cool thing I built!" Look for
-opportunities to polish and show the world what you can do!
+signals of quality software development. The end result of this project is
+a portfolio piece that we are excited to put on our resume and share with
+friends and family: "Hey - look at this cool thing we built!"
+
+#buildersofthings #webuildtheweb
 
 --------------------------------------------------------------------------------
