@@ -29,8 +29,8 @@ function forZillowAPI (){
 function getRegion (){
     console.info('You pressed for the get')
     forZillowAPI()
-    $.ajax(`http://www.zillow.com/webservice/GetRegionChildren.htm?zws-id=${apiKey}&state=wa&city=seattle&childtype=neighborhood`)
-    .then(results)
+    $.ajax(`http://www.zillow.com/webservice/GetRegionChildren.htm?zws-id=${apiKey}&state=tx&city=houston&childtype=neighborhood&output=json`)
+    .then(xmlToJson)
     .catch(function (error){
         console.info('This is the error', error)
     })
@@ -40,7 +40,7 @@ function getUpdatedProp (){
     console.info('You pressed for the Get updatedProperty Details')
     forZillowAPI()
     $.ajax(`http://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?zws-id=${apiKey}&zpid=48749425`)
-    .then(results)
+    .then(xmlToJson)
     .catch(fail)
 }
 
@@ -48,14 +48,14 @@ function getChart (){
     console.info('You pressed for the Get Chart API')
     forZillowAPI()
     $.ajax(`http://www.zillow.com/webservice/GetChart.htm?zws-id=${apiKey}&unit-type=percent&zpid=48749425&width=300&height=150`)
-    .then(results)
+    .then(xmlToJson)
     .catch(fail)
 }
 function getComps (){
     console.info('You pressed for the Get Comps API')
     forZillowAPI()
     $.ajax(`http://www.zillow.com/webservice/GetComps.htm?zws-id=${apiKey}&zpid=48749425&count=5`)
-    .then(results)
+    .then(xmlToJson)
     .catch(fail)
 }
 
@@ -63,20 +63,60 @@ function getDeepSearch (){
     console.info('You pressed for the getDeep Search API')
     forZillowAPI()
     $.ajax(`http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=${apiKey}&address=2114+Bigelow+Ave&citystatezip=Seattle%2C+WA`)
-    .then(results)
+    .then(xmlToJson)
     .catch(fail)
 }
 function getSearchResult (){
     console.info('You pressed for the get Search Results API')
     forZillowAPI()
     $.ajax(`http://www.zillow.com/webservice/GetSearchResults.htm?zws-id=${apiKey}&address=2114+Bigelow+Ave&citystatezip=Seattle%2C+WA`)
-    .then(results)
+    .then(xmlToJson)
     .catch(fail)
 }
 function getZestinate (){
     console.info('You pressed for the get Zestiate API')
     forZillowAPI()
     $.ajax(`http://www.zillow.com/webservice/GetZestimate.htm?zws-id=${apiKey}&zpid=48749425`)
-    .then(results)
+    .then(xmlToJson)
     .catch(fail)
+}
+
+
+function xmlToJson(xml) {
+	
+	// Create the return object
+	var obj = {};
+
+	if (xml.nodeType == 1) { // element
+		// do attributes
+		if (xml.attributes.length > 0) {
+		obj["@attributes"] = {};
+			for (var j = 0; j < xml.attributes.length; j++) {
+				var attribute = xml.attributes.item(j);
+				obj["@attributes"][attribute.nodeName] = attribute.nodeValue;
+			}
+		}
+	} else if (xml.nodeType == 3) { // text
+		obj = xml.nodeValue;
+	}
+
+	// do children
+	if (xml.hasChildNodes()) {
+		for(var i = 0; i < xml.childNodes.length; i++) {
+			var item = xml.childNodes.item(i);
+			var nodeName = item.nodeName;
+			if (typeof(obj[nodeName]) == "undefined") {
+				obj[nodeName] = xmlToJson(item);
+			} else {
+				if (typeof(obj[nodeName].push) == "undefined") {
+					var old = obj[nodeName];
+					obj[nodeName] = [];
+					obj[nodeName].push(old);
+				}
+				obj[nodeName].push(xmlToJson(item));
+			}
+		}
+    }
+    console.info(obj)
+	return obj;
 }
