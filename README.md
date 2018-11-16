@@ -32,18 +32,6 @@ HomeSlice serves to fill the gap between locating the home of your dreams and qu
   - [Firebase](https://firebase.google.com/)
   - [Google Maps](https://developers.google.com/maps/documentation/)
   - [Zillow](https://www.zillow.com/howto/api/)
-  
-    -GetUpdatedPropertyDetails
-    
-    -GetChart
-    
-    -GetComps
-    
-    -GetDeepSerachResults
-    
-    -GetSearchResults
-    
-    -GetZestimate
 
 - Deployment on AWS:
   - [Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html)
