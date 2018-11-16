@@ -32,11 +32,17 @@ HomeSlice serves to fill the gap between locating the home of your dreams and qu
   - [Firebase](https://firebase.google.com/)
   - [Google Maps](https://developers.google.com/maps/documentation/)
   - [Zillow](https://www.zillow.com/howto/api/)
+  
     -GetUpdatedPropertyDetails
+    
     -GetChart
+    
     -GetComps
+    
     -GetDeepSerachResults
+    
     -GetSearchResults
+    
     -GetZestimate
 
 - Deployment on AWS:
@@ -47,7 +53,7 @@ HomeSlice serves to fill the gap between locating the home of your dreams and qu
 
 ## Agile Workflow
 
-- [Trello]:https://trello.com/b/WXf2yM1q/home-slice-workflow
+- [Trello](https://trello.com/b/WXf2yM1q/home-slice-workflow)
 
 
 ## Learning Objectives
