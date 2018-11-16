@@ -7,6 +7,8 @@ Houston.
 
 [DigitalCrafts]:https://www.digitalcrafts.com/
 
+## Travis
+
 [![Build Status](https://travis-ci.org/sarahnash/home-slice.svg?branch=master)](https://travis-ci.org/sarahnash/home-slice)
 
 ## Project Description
