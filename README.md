@@ -43,9 +43,7 @@ HomeSlice serves to fill the gap between locating the home of your dreams and qu
 
 - [Trello](https://trello.com/b/WXf2yM1q/home-slice-workflow)
 
-[[https://github.com/sarahnash/home-slice/raw/master/img/HomeSlicePlanImage_1.JPG]]
-[[https://github.com/sarahnash/home-slice/raw/master/img/HomeSlicePlanImage_2.JPG]]
-[[https://github.com/sarahnash/home-slice/raw/master/img/HomeSlicePlanImage_3.JPG]]
+- [PlanningImages](https://github.com/sarahnash/home-slice/wiki)
 
 
 ## Learning Objectives
