@@ -3,7 +3,7 @@
 
 <head>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
-  <link href="style.css" rel="stylesheet">
+  <link href="styles/style.css" rel="stylesheet">
   <title>Home-Slice</title>
 </head>
 
@@ -36,58 +36,60 @@
       Search for Your Dream Home<br>
     </div>
 
-  <!-- =======================================SEARCH CRITERIA============================== -->
-<div class="srchBxBkgrd">
-  <div class="homeSearch mx-auto">
-    
-     <!-- BUY-RENT RADIO BUTTONS -->
-  <div class="btn-group btn-group-toggle mt-3 mb-3" data-toggle="buttons">
-      <label class="btn btn-secondary active pl-5 pr-5"><input autocomplete="off" checked id="BUY" name="options" type="radio"> BUY</label>
-      <label class="btn btn-secondary pl-5 pr-5"><input autocomplete="off" id="RENT" name="options" type="radio"> RENT</label>
-    </div>
+    <!-- =======================================SEARCH CRITERIA============================== -->
+    <div class="srchBxBkgrd">
+      <div class="homeSearch mx-auto">
 
-<!-- STATE-CITY-ZIP -->
-    <div class="input-group mb-3">
-      <input aria-describedby="basic-addon2" aria-label="Enter State, City or Zip" class="form-control" placeholder="Enter State, City or Zip"
-        type="text">
-      <div class="input-group-append">
-        <button class="btn btn-secondary" type="button">Search</button>
-      </div>
-    </div>
-
-    <!-- MIN$-->
-    <div class="d-flex justify-content-between" id="money">
-      <div class="input-group mr-5 mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Min $</span>
-        </div><input aria-label="Amount (to the nearest dollar)" class="form-control" type="text">
-        <div class="input-group-append">
-          <span class="input-group-text">.00</span>
+        <!-- BUY-RENT RADIO BUTTONS -->
+        <div class="btn-group btn-group-toggle mt-3 mb-3" data-toggle="buttons">
+          <label class="btn btn-secondary active pl-5 pr-5"><input autocomplete="off" checked id="BUY" name="options"
+              type="radio"> BUY</label>
+          <label class="btn btn-secondary pl-5 pr-5"><input autocomplete="off" id="RENT" name="options" type="radio">
+            RENT</label>
         </div>
-      </div>
 
-      <!-- MAX$-->
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Max $</span>
-        </div><input aria-label="Amount (to the nearest dollar)" class="form-control" type="text">
-        <div class="input-group-append">
-          <span class="input-group-text">.00</span>
+        <!-- STATE-CITY-ZIP -->
+        <div class="input-group mb-3">
+          <input aria-describedby="basic-addon2" aria-label="Enter State, City or Zip" class="form-control" placeholder="Enter State, City or Zip"
+            type="text">
+          <div class="input-group-append">
+            <button class="btn btn-secondary" type="button">Search</button>
+          </div>
+        </div>
+
+        <!-- MIN$-->
+        <div class="d-flex justify-content-between" id="money">
+          <div class="input-group mr-5 mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Min $</span>
+            </div><input aria-label="Amount (to the nearest dollar)" class="form-control" type="text">
+            <div class="input-group-append">
+              <span class="input-group-text">.00</span>
+            </div>
+          </div>
+
+          <!-- MAX$-->
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Max $</span>
+            </div><input aria-label="Amount (to the nearest dollar)" class="form-control" type="text">
+            <div class="input-group-append">
+              <span class="input-group-text">.00</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  </div>
-</div>
 
-      <!-- CARDS -->
-      <div id='zillow-houses'></div>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js">
-    </script>
+  <!-- CARDS -->
+  <div id='zillow-houses'></div>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js">
+  </script>
 </body>
 
 </html>

@@ -34,7 +34,7 @@
 }
 
 .srchBxBkgrd {
-    background: rgba(128, 126, 126, 1);
+    background: rgba(0, 0, 0, 0.6);
     width:50%;
     margin: 0 auto 0 auto;
     border-radius: 80px;
