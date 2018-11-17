@@ -10,7 +10,7 @@
 	background-attachment: scroll;
 }
 .pimg1 {
-	background-image: url('images/heroimg.jpg');
+	background-image: url('../images/heroimg.jpg');
     min-height: 900px;
     
 }
