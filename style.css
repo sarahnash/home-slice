@@ -22,6 +22,25 @@
     padding: auto;
 
 }
-#money{
-    width: 30px;
+.homeSearch {
+    /* margin-top: 30%; */
+    width: 90%;
+    opacity: 1;
+    padding: 15px;
+}
+
+#money {
+    width:100%;
+    opacity: 1;
+}
+
+.srchBxBkgrd {
+    background: rgba(128, 126, 126, 0.8);
+    width:50%;
+    margin: 0 auto 0 auto;
+    border-radius: 80px;
+}
+
+.ptext {
+    padding-top: 25%;
 }
