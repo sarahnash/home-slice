@@ -1,6 +1,4 @@
-window.HOMESLICE = window.HOMESLICE || {}
 
-;(function () {
   const $ = window.jQuery
 
   document.addEventListener('DOMContentLoaded', init)
@@ -33,18 +31,24 @@ window.HOMESLICE = window.HOMESLICE || {}
     forZillowAPI()
     $.ajax(`http://www.zillow.com/webservice/GetRegionChildren.htm?zws-id=${apiKey}&state=tx&city=houston&childtype=neighborhood&output=json`)
       .then(xmlToJson)
+      .then(function (x){
+        console.info(x)
+      })
       .catch(function (error) {
         console.info('This is the error', error)
       })
   }
 
-  window.HOMESLICE.getRegion = getRegion
+
 
   function getUpdatedProp () {
     console.info('You pressed for the Get updatedProperty Details')
     forZillowAPI()
     $.ajax(`http://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?zws-id=${apiKey}&zpid=48749425`)
       .then(xmlToJson)
+      .then(function (x){
+        console.info(x)
+      })
       .catch(fail)
   }
 
@@ -53,6 +57,9 @@ window.HOMESLICE = window.HOMESLICE || {}
     forZillowAPI()
     $.ajax(`http://www.zillow.com/webservice/GetChart.htm?zws-id=${apiKey}&unit-type=percent&zpid=48749425&width=300&height=150`)
       .then(xmlToJson)
+      .then(function (x){
+        console.info(x)
+      })
       .catch(fail)
   }
   function getComps () {
@@ -60,6 +67,9 @@ window.HOMESLICE = window.HOMESLICE || {}
     forZillowAPI()
     $.ajax(`http://www.zillow.com/webservice/GetComps.htm?zws-id=${apiKey}&zpid=48749425&count=5`)
       .then(xmlToJson)
+      .then(function (x){
+        console.info(x)
+      })
       .catch(fail)
   }
 
@@ -68,6 +78,9 @@ window.HOMESLICE = window.HOMESLICE || {}
     forZillowAPI()
     $.ajax(`http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=${apiKey}&address=2114+Bigelow+Ave&citystatezip=Seattle%2C+WA`)
       .then(xmlToJson)
+      .then(function (x){
+        console.info(x)
+      })
       .catch(fail)
   }
   function getSearchResult () {
@@ -75,6 +88,9 @@ window.HOMESLICE = window.HOMESLICE || {}
     forZillowAPI()
     $.ajax(`http://www.zillow.com/webservice/GetSearchResults.htm?zws-id=${apiKey}&address=2114+Bigelow+Ave&citystatezip=Seattle%2C+WA`)
       .then(xmlToJson)
+      .then(function (x){
+        console.info(x)
+      })
       .catch(fail)
   }
   function getZestinate () {
@@ -82,6 +98,9 @@ window.HOMESLICE = window.HOMESLICE || {}
     forZillowAPI()
     $.ajax(`http://www.zillow.com/webservice/GetZestimate.htm?zws-id=${apiKey}&zpid=48749425`)
       .then(xmlToJson)
+      .then(function (x){
+        console.info(x)
+      })
       .catch(fail)
   }
 
@@ -122,4 +141,4 @@ window.HOMESLICE = window.HOMESLICE || {}
     console.info(obj)
     return obj
   }
-})()
+
