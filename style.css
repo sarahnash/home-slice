@@ -1,5 +1,5 @@
 .pimg1 {
-	position: relative;
+    position: relative;
 	background-position: center;
 	background-size: cover;
 	background-repeat: no-repeat;
@@ -24,4 +24,8 @@
 }
 #money{
     width: 30px;
+}
+
+.navbar-custom {
+    background-color: #ffad33 !important;
 }
