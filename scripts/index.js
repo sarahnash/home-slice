@@ -15,6 +15,7 @@ const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
 
     function init() {
         console.info('The DOM has loaded')
+        const renderPlaces = document.getElementById('render-places')
         document.getElementById('search-form').addEventListener('submit', getInfo)
         getData('NYC')
         // getOtherData()
@@ -45,7 +46,22 @@ const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
             })
             .then(function (res) {
                 console.info('This is the results', res)
-                console.info('This is the buisness id', res.businesses.length)
+                console.info('This is the buisness id', res.businesses)
+                return res.businesses
+            })
+            .then(function (array){
+                let theWord = ''
+                for(let i = 0; i < array.length; i++){
+                    theWord += `<div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="${array[i].image_url}" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">${array[i].name}</h5>
+                      <p class="card-text">${array[i].price}</p>
+                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                  </div>`
+                }
+
             })
             .catch(function (error) {
                 console.alert(error)
