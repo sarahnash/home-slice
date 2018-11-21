@@ -1,9 +1,9 @@
-const apiKey = 'X1-ZWz1gr0cjpiscr_aau4b'
-
-;
+const apiKey = `2tFurqRYbB_R4WkxVxs_74cZPMtIPu_9c62p69PmjCW6JEtH6_pm0XrSEqQqjYsP7aMQRE8RG9sYlcjbjcLjpUmea4hqSXaItF08axHXVF358SAxKUXTkDFLhm3wW3Yx`
+const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
 (function () {
+    document.addEventListener('DOMContentLoaded', init)
 
-    function forZillowAPI() {
+    function corseAPI() {
         $.ajaxPrefilter(function (options) {
             if (options.crossDomain && jQuery.support.cors) {
                 options.url = 'https://cors-anywhere.herokuapp.com/' + options.url
@@ -11,93 +11,82 @@ const apiKey = 'X1-ZWz1gr0cjpiscr_aau4b'
         })
     }
 
-    document.addEventListener('DOMContentLoaded', init)
+
 
     function init() {
-        $container = $('#zillow-houses')
-        $container.html(renderHouses())
+        console.info('The DOM has loaded')
+        document.getElementById('search-form').addEventListener('submit', getInfo)
+        getData('NYC')
+        $container = $('#render-places')
+        getOtherData('H4jJ7XB3CetIr1pg56CczQ')
     }
 
 
-    function searchItem (){
-        //Add event lister to get Info
+
+
+    //Obtain the information for search
+    function getInfo(evt) {
+        evt.preventDefault()
+        console.info('Typing')
+        let info = takeInput(document.getElementById('search-bar').value.toLowerCase())
+        console.info('This is the info ' + info)
+        getData(info)
     }
 
 
-    function renderHouses() {
-        forZillowAPI()
-        $.ajax(`http://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?zws-id=${apiKey}&zpid=48749425`)
-            .then(xmlToJson)
+
+
+    function getData(location) {
+        corseAPI()
+        $.ajax({
+                url: `https://api.yelp.com/v3/businesses/search?location=${location}`,
+                headers: {
+                    'Authorization': `Bearer ${apiKey}`
+                }
+            })
             .then(function (res) {
-                console.info(res['UpdatedPropertyDetails:updatedPropertyDetails'].response)
-                let theHouse = res['UpdatedPropertyDetails:updatedPropertyDetails'].response.images.image.url['#text']
-                $container.html(renderCard(theHouse, 'Seattle'))
+                console.info('This is the results', res)
+                console.info('This is the buisness id', res.businesses)
+                return res.businesses
+            })
+            .then(function (array) {
+                let theWord = ''
+                for (let i = 0; i < array.length; i++) {
+                    theWord += `<div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="${array[i].image_url}" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">${array[i].name}</h5>
+                      <p class="card-text">${array[i].price}</p>
+                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                  </div>`
+                }
+                $container.html(theWord)
+
             })
             .catch(function (error) {
-                alert(error)
+                console.alert(error)
+            })
+
+    }
+
+    function getOtherData(id) {
+        corseAPI()
+        $.ajax({
+                url: `https://api.yelp.com/v3/businesses/${id}`,
+                headers: {
+                    'Authorization': `Bearer  ${apiKey}`
+                }
+            })
+            .then(function (res) {
+                console.info('This is the reseult of other things', res)
             })
     }
 
-    function renderCard(houseImg, city) {
-        return `<div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="${houseImg}" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>`
+    function takeInput(search) {
+        let urlEncodedSearchString = encodeURIComponent(search)
+        return urlEncodedSearchString
     }
-
-
-
-    function xmlToJson(xml) {
-        // Create the return object
-        let obj = {}
-
-        if (xml.nodeType == 1) { // element
-            // do attributes
-            if (xml.attributes.length > 0) {
-                obj['@attributes'] = {}
-                for (let j = 0; j < xml.attributes.length; j++) {
-                    let attribute = xml.attributes.item(j)
-                    obj['@attributes'][attribute.nodeName] = attribute.nodeValue
-                }
-            }
-        } else if (xml.nodeType == 3) { // text
-            obj = xml.nodeValue
-        }
-
-        // do children
-        if (xml.hasChildNodes()) {
-            for (let i = 0; i < xml.childNodes.length; i++) {
-                let item = xml.childNodes.item(i)
-                let nodeName = item.nodeName
-                if (typeof (obj[nodeName]) === 'undefined') {
-                    obj[nodeName] = xmlToJson(item)
-                } else {
-                    if (typeof (obj[nodeName].push) === 'undefined') {
-                        let old = obj[nodeName]
-                        obj[nodeName] = []
-                        obj[nodeName].push(old)
-                    }
-                    obj[nodeName].push(xmlToJson(item))
-                }
-            }
-        }
-        return obj
-    }
-
-
-
-
-
-
-
-
-
-
-
 
 
 })()

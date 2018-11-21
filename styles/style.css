@@ -1,27 +1,56 @@
-.pimg1 {
-	position: relative;
-	background-position: center;
-	background-size: cover;
-	background-repeat: no-repeat;
-	/*
+
+.mainImg {
+    position: relative;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    /*
       fixed = parallax
       scroll = normal
     */
-	background-attachment: scroll;
+    background-attachment: scroll;
+    background-image: url('../images/dinner-dish-egg-.jpg');
+    min-height: 980px;
 }
-.pimg1 {
-	background-image: url('../images/heroimg.jpg');
-    min-height: 900px;
-    
+body {
+    font-family: 'Roboto', sans-serif;
 }
-.ptext {
+.mainImgTxt {
     font-size: 60px;
     font-weight: bolder;
     color: white;
     text-align: center;
     padding: auto;
-
+    padding-top: 10%;
 }
+.searchBarContainer {
+    width: 50%;
+    margin: 0 auto 0 auto;
+}
+.card-img-overlay .card-title {
+    color: white;
+}
+.card-title {
+    margin-top: 25%;
+}
+.card-img {
+    border-radius: 5px;
+    opacity: 0.7;
+    box-sizing: border-box;
+}
+
+.zoom {
+    transition: transform .3s;
+}
+.zoom:hover {
+    -ms-transform: scale(1.1); /* IE 9 */
+    -webkit-transform: scale(1.1); /* Safari 3-8 */
+    transform: scale(1.1); 
+}
+.fa-search-location {
+    font-size: 30px;
+}
+<<<<<<< HEAD
 .homeSearch {
     /* margin-top: 30%; */
     width: 90%;
@@ -42,4 +71,13 @@
 
 .ptext {
     padding-top: 25%;
+=======
+.fa-yelp {
+    color: red;
+    font-size: 25px;
+}
+
+.input-group .form-control{
+    min-height: 50px;
+>>>>>>> aeabf2cc71fa1a3ebc5e7a9b4d78404337a130c8
 }
