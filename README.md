@@ -25,12 +25,12 @@ HomeSlice serves to fill the gap between locating the home of your dreams and qu
 - CSS framework:
   - [Bootstrap](http://getbootstrap.com/)
 
-- Remote APIs accessed using AJAX:
+- Remote APIs:
   - [Firebase](https://firebase.google.com/)
   - [Google Maps](https://developers.google.com/maps/documentation/)
   - [Yelp](https://www.yelp.com/developers)
 
-- Deployment on AWS:
+- Deployment on Firebase:
   - [Firebase](https://firebase.google.com/docs/hosting/)
 
 - Testing Service:
