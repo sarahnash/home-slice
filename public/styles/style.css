@@ -58,3 +58,9 @@ body {
 .input-group .form-control{
     min-height: 50px;
 }
+
+
+#cardListContainer{
+    display: flex;
+    flex-wrap: wrap;
+}

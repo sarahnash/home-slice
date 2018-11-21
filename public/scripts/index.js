@@ -8,6 +8,7 @@ const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
             if (options.crossDomain && jQuery.support.cors) {
                 options.url = 'https://cors-anywhere.herokuapp.com/' + options.url
             }
+
         })
     }
 
@@ -17,8 +18,6 @@ const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
         corseAPI()
         console.info('The DOM has loaded')
         document.getElementById('search-form').addEventListener('submit', getInfo)
-        getData('NYC')
-        $container = $('#render-places')
     }
 
 
@@ -33,31 +32,45 @@ const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
         getData(info)
     }
 
-getData('nyc').then
 
 
     function getData(location) {
         // corseAPI()
         $.ajax({
-                url: `https://api.yelp.com/v3/businesses/search?location=${location}&limit=10`,
+                url: `https://api.yelp.com/v3/businesses/search?location=${location}&limit=30`,
                 headers: {
                     'Authorization': `Bearer ${apiKey}`
                 }
             })
             .then(function (res) {
+                console.info(res.businesses)
                 return res.businesses
             })
             .then(giveBuisInfo)
-            .then(function (res){
-                console.info(res)
-            })
+            .then(displayData)
             .catch(function (error) {
-                console.alert(error)
+
             })
 
     }
     function displayData (array){
-        // To do something
+        console.info('this is the displayData', array)
+        let newArray = array.map(displayTheData)
+        let displayArrray = newArray.join(' ')
+        console.info(displayArrray)
+        document.getElementById('cardListContainer').innerHTML = displayArrray
+    }
+    function displayTheData(res){
+      if(res){
+      return `<div class="card" style="width: 18rem;">
+      <img class="card-img-top" src="${res.image_url}" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">${res.name}</h5>
+        <p class="card-text">${res.price}.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>`
+      }
     }
     function giveBuisInfo(array){
        let newArray =  array.map(getBuisData)
@@ -75,12 +88,10 @@ getData('nyc').then
                 return res
             })
             .catch(function (error){
-                console.error(error)
+
             })
     }
-    function displayData (obj){
-        console.info('This is the display Data', obj)
-    }
+
 
     function takeInput(search) {
         let urlEncodedSearchString = encodeURIComponent(search)
