@@ -18,6 +18,7 @@ const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
         corseAPI()
         console.info('The DOM has loaded')
         document.getElementById('search-form').addEventListener('submit', getInfo)
+
     }
 
 
