@@ -15,9 +15,9 @@ const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
 
     function init() {
         console.info('The DOM has loaded')
-        const renderPlaces = document.getElementById('render-places')
         document.getElementById('search-form').addEventListener('submit', getInfo)
         getData('NYC')
+        $container = $('#render-places')
         // getOtherData()
     }
 
@@ -49,9 +49,9 @@ const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
                 console.info('This is the buisness id', res.businesses)
                 return res.businesses
             })
-            .then(function (array){
+            .then(function (array) {
                 let theWord = ''
-                for(let i = 0; i < array.length; i++){
+                for (let i = 0; i < array.length; i++) {
                     theWord += `<div class="card" style="width: 18rem;">
                     <img class="card-img-top" src="${array[i].image_url}" alt="Card image cap">
                     <div class="card-body">
@@ -61,6 +61,7 @@ const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
                     </div>
                   </div>`
                 }
+                $container.html(theWord)
 
             })
             .catch(function (error) {
