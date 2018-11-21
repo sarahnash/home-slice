@@ -29,3 +29,10 @@
 .navbar-custom {
     background-color: #ffad33 !important;
 }
+#render-places{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    border-style: hidden;
+    border: 10px;
+}
