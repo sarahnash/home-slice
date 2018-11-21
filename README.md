@@ -21,11 +21,6 @@ HomeSlice serves to fill the gap between locating the home of your dreams and qu
 
 - JavaScript libraries:
   - [jQuery.js](https://jquery.com/)
-  - [Moment.js](https://momentjs.com/)
-  - [Marked](https://marked.js.org/)
-  - [jQuery UI](https://jqueryui.com/)
-  - [chessboard.js](http://chessboardjs.com/)
-  - [Additional List](./additional-libraries.md)
 
 - CSS framework:
   - [Bootstrap](http://getbootstrap.com/)
@@ -33,10 +28,10 @@ HomeSlice serves to fill the gap between locating the home of your dreams and qu
 - Remote APIs accessed using AJAX:
   - [Firebase](https://firebase.google.com/)
   - [Google Maps](https://developers.google.com/maps/documentation/)
-  - [Zillow](https://www.zillow.com/howto/api/)
+  - [Yelp](https://www.yelp.com/developers)
 
 - Deployment on AWS:
-  - [Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html)
+  - [Firebase](https://firebase.google.com/docs/hosting/)
 
 - Testing Service:
   - [Travis CI](https://travis-ci.org/)
