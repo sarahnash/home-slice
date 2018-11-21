@@ -14,11 +14,11 @@ const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
 
 
     function init() {
+        corseAPI()
         console.info('The DOM has loaded')
         document.getElementById('search-form').addEventListener('submit', getInfo)
         getData('NYC')
         $container = $('#render-places')
-        getOtherData('H4jJ7XB3CetIr1pg56CczQ')
     }
 
 
@@ -33,54 +33,53 @@ const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
         getData(info)
     }
 
-
+getData('nyc').then
 
 
     function getData(location) {
-        corseAPI()
+        // corseAPI()
         $.ajax({
-                url: `https://api.yelp.com/v3/businesses/search?location=${location}`,
+                url: `https://api.yelp.com/v3/businesses/search?location=${location}&limit=10`,
                 headers: {
                     'Authorization': `Bearer ${apiKey}`
                 }
             })
             .then(function (res) {
-                console.info('This is the results', res)
-                console.info('This is the buisness id', res.businesses)
                 return res.businesses
             })
-            .then(function (array) {
-                let theWord = ''
-                for (let i = 0; i < array.length; i++) {
-                    theWord += `<div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="${array[i].image_url}" alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title">${array[i].name}</h5>
-                      <p class="card-text">${array[i].price}</p>
-                      <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                  </div>`
-                }
-                $container.html(theWord)
-
+            .then(giveBuisInfo)
+            .then(function (res){
+                console.info(res)
             })
             .catch(function (error) {
                 console.alert(error)
             })
 
     }
-
-    function getOtherData(id) {
-        corseAPI()
-        $.ajax({
+    function displayData (array){
+        // To do something
+    }
+    function giveBuisInfo(array){
+       let newArray =  array.map(getBuisData)
+        return Promise.all(newArray)
+    }
+    function getBuisData(array) {
+        id = array.id
+       return $.ajax({
                 url: `https://api.yelp.com/v3/businesses/${id}`,
                 headers: {
-                    'Authorization': `Bearer  ${apiKey}`
+                    'Authorization': `Bearer ${apiKey}`
                 }
             })
-            .then(function (res) {
-                console.info('This is the reseult of other things', res)
+            .then(function (res){
+                return res
             })
+            .catch(function (error){
+                console.error(error)
+            })
+    }
+    function displayData (obj){
+        console.info('This is the display Data', obj)
     }
 
     function takeInput(search) {
@@ -90,3 +89,31 @@ const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
 
 
 })()
+
+
+// // TO ADD
+// <!-- Button trigger modal -->
+// <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+//   Launch demo modal
+// </button>
+
+// <!-- Modal -->
+// <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+//   <div class="modal-dialog" role="document">
+//     <div class="modal-content">
+//       <div class="modal-header">
+//         <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+//         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+//           <span aria-hidden="true">&times;</span>
+//         </button>
+//       </div>
+//       <div class="modal-body">
+//         ...
+//       </div>
+//       <div class="modal-footer">
+//         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+//         <button type="button" class="btn btn-primary">Save changes</button>
+//       </div>
+//     </div>
+//   </div>
+// </div>
