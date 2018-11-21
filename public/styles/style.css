@@ -56,10 +56,18 @@ body {
 .input-group .form-control{
     min-height: 50px;
 }
+
+
+
+#cardListContainer{
+    display: flex;
+    flex-wrap: wrap;
+}
+
 #render-places {
         width: 100%;
         height: 15vw;
         object-fit: cover;
     }
     
-}
+
