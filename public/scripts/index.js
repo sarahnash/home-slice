@@ -1,6 +1,9 @@
+const $ = window.jQuery
+
 const apiKey = `2tFurqRYbB_R4WkxVxs_74cZPMtIPu_9c62p69PmjCW6JEtH6_pm0XrSEqQqjYsP7aMQRE8RG9sYlcjbjcLjpUmea4hqSXaItF08axHXVF358SAxKUXTkDFLhm3wW3Yx`
 const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
 (function () {
+
     document.addEventListener('DOMContentLoaded', init)
 
     function corseAPI() {
@@ -18,7 +21,6 @@ const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
         corseAPI()
         console.info('The DOM has loaded')
         document.getElementById('search-form').addEventListener('submit', getInfo)
-
     }
 
 
@@ -100,8 +102,8 @@ const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
     }
 
 
-})()
 
+})()
 
 // // TO ADD
 // <!-- Button trigger modal -->

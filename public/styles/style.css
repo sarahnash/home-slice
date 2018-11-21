@@ -1,4 +1,3 @@
-
 .mainImg {
     position: relative;
     background-position: center;
@@ -35,12 +34,12 @@ body {
 }
 .card-img {
     border-radius: 5px;
-    opacity: 0.7;
+    opacity: 0.8;
     box-sizing: border-box;
 }
 
 .zoom {
-    transition: transform .3s;
+    transition: transform .2s;
 }
 .zoom:hover {
     -ms-transform: scale(1.1); /* IE 9 */
@@ -54,13 +53,22 @@ body {
     color: red;
     font-size: 25px;
 }
-
 .input-group .form-control{
     min-height: 50px;
 }
+
 
 
 #cardListContainer{
     display: flex;
     flex-wrap: wrap;
 }
+
+#render-places {
+        width: 100%;
+        height: 15vw;
+        object-fit: cover;
+    }
+    
+
+
