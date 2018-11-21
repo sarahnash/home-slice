@@ -18,7 +18,7 @@ const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
         document.getElementById('search-form').addEventListener('submit', getInfo)
         getData('NYC')
         $container = $('#render-places')
-        // getOtherData()
+        getOtherData('H4jJ7XB3CetIr1pg56CczQ')
     }
 
 
