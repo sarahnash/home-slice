@@ -1,7 +1,7 @@
 const $ = window.jQuery
 
 const apiKey = `2tFurqRYbB_R4WkxVxs_74cZPMtIPu_9c62p69PmjCW6JEtH6_pm0XrSEqQqjYsP7aMQRE8RG9sYlcjbjcLjpUmea4hqSXaItF08axHXVF358SAxKUXTkDFLhm3wW3Yx`
-const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
+const clientID = `6PaudvUaHDgnvmwq8HFv5w`
 (function () {
 
     document.addEventListener('DOMContentLoaded', init)
@@ -15,38 +15,35 @@ const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
         })
     }
 
-
-
     function init() {
         corseAPI()
+        if ("geolocation" in navigator) {
+            console.info('TRUE')
+          } else {
+            /* geolocation IS NOT available */
+          }
         console.info('The DOM has loaded')
         document.getElementById('search-form').addEventListener('submit', getInfo)
+        document.getElementById('cardListContainer').addEventListener('click', displayModal)
     }
-
-
-
-
+    //--------------------
+    // Functions to get information from API and render the results from it
     //Obtain the information for search
     function getInfo(evt) {
         evt.preventDefault()
         console.info('Typing')
-        let info = takeInput(document.getElementById('search-bar').value.toLowerCase())
-        console.info('This is the info ' + info)
-        getData(info)
+        let location = encodeURI(document.getElementById('search-bar').value.toLowerCase())
+        getData(location)
     }
 
-
-
     function getData(location) {
-        // corseAPI()
         $.ajax({
-                url: `https://api.yelp.com/v3/businesses/search?location=${location}&limit=30`,
+                url: `https://api.yelp.com/v3/businesses/search?location=${location}&limit=25`,
                 headers: {
                     'Authorization': `Bearer ${apiKey}`
                 }
             })
             .then(function (res) {
-                console.info(res.businesses)
                 return res.businesses
             })
             .then(giveBuisInfo)
@@ -56,47 +53,58 @@ const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
             })
 
     }
-    function displayData (array){
-        console.info('this is the displayData', array)
-        let newArray = array.map(displayTheData)
-        let displayArrray = newArray.join(' ')
-        console.info(displayArrray)
-        document.getElementById('cardListContainer').innerHTML = displayArrray
+
+    function renderCards(res) {
+        if (res) {
+            return `
+            <div class="card bg-dark text-white" id='${res.id}'>
+                    <img class="card-img" src="${res.image_url}" alt="Card image ">
+                    <div class="card-img-overlay">
+                        <h5 class="card-title">${res.name}</h5>
+                        <p class="card-text">${res.price}</p>
+                        <p class="card-text">Hi</p>
+                </div>
+            </div>
+            `
+            
+        }
+
     }
-    function displayTheData(res){
-      if(res){
-      return `<div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="${res.image_url}" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">${res.name}</h5>
-        <p class="card-text">${res.price}.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>`
-      }
-    }
-    function giveBuisInfo(array){
-       let newArray =  array.map(getBuisData)
+
+    function giveBuisInfo(array) {
+        let newArray = array.map(getBuisData)
         return Promise.all(newArray)
     }
+
+    function displayData(array) {
+        console.info('this is the displayData', array)
+        let newArray = array.map(renderCards)
+        let displayArrray = newArray.join(' ')
+        document.getElementById('cardListContainer').innerHTML = displayArrray
+    }
+
     function getBuisData(array) {
         id = array.id
-       return $.ajax({
+        return $.ajax({
                 url: `https://api.yelp.com/v3/businesses/${id}`,
                 headers: {
                     'Authorization': `Bearer ${apiKey}`
                 }
             })
-            .then(function (res){
+            .then(function (res) {
                 return res
             })
-            .catch(function (error){
+            .catch(function (error) {
 
             })
     }
+    //-----------------------
 
+    function displayModal(evt) {
+        console.info(evt.target)
+    }
 
-    function takeInput(search) {
+    function encodeURI(search) {
         let urlEncodedSearchString = encodeURIComponent(search)
         return urlEncodedSearchString
     }
@@ -104,30 +112,3 @@ const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
 
 
 })()
-
-// // TO ADD
-// <!-- Button trigger modal -->
-// <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-//   Launch demo modal
-// </button>
-
-// <!-- Modal -->
-// <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-//   <div class="modal-dialog" role="document">
-//     <div class="modal-content">
-//       <div class="modal-header">
-//         <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-//         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-//           <span aria-hidden="true">&times;</span>
-//         </button>
-//       </div>
-//       <div class="modal-body">
-//         ...
-//       </div>
-//       <div class="modal-footer">
-//         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-//         <button type="button" class="btn btn-primary">Save changes</button>
-//       </div>
-//     </div>
-//   </div>
-// </div>
