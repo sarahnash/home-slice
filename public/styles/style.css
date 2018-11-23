@@ -64,9 +64,13 @@ body {
     margin: 25px;
     opacity: 1;
 }
-#cardListContainer{
+#places-to-eat{
     display: flex;
     flex-wrap: wrap;
+}
+.loading{
+    text-align: center;
+    
 }
 
 
