@@ -58,16 +58,19 @@ body {
 }
 
 
-
-#cardListContainer{
+.card{
+    width: 250px;
+    height: fit-content;
+    margin: 25px;
+    opacity: 1;
+}
+#places-to-eat{
     display: flex;
     flex-wrap: wrap;
 }
-
-#render-places {
-        width: 100%;
-        height: 15vw;
-        object-fit: cover;
-    }
+.loading{
+    text-align: center;
     
+}
+
 
