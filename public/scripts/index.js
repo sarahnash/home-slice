@@ -45,6 +45,7 @@ const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
         }
 
         function getDetailedBuis(term) {
+
             $.ajax({
                     url: `https://api.yelp.com/v3/businesses/search?latitude=${userSearchData.lat}&longitude=${userSearchData.long}&term=${term}&limit=50`,
                     headers: {
@@ -59,6 +60,19 @@ const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
 
                 })
 
+            // axios({
+            //     url: `https://api.yelp.com/v3/businesses/search?latitude=${userSearchData.lat}&longitude=${userSearchData.long}&term=${term}&limit=50`,
+            //     headers:{
+            //         'Authorization': `${apiKey}`
+            //     }
+            // })
+            // .then(function (res) {
+            //     return res.businesses
+            // })
+            // .then(displayData)
+            // .catch(function (error){
+            //     console.error(error)
+            // })
         }
 
         function createHTML(res) {
