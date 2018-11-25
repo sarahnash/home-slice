@@ -45,7 +45,6 @@ const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
         }
 
         function getDetailedBuis(term) {
-
             $.ajax({
                     url: `https://api.yelp.com/v3/businesses/search?latitude=${userSearchData.lat}&longitude=${userSearchData.long}&term=${term}&limit=50`,
                     headers: {
