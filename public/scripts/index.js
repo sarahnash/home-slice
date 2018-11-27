@@ -107,6 +107,10 @@ const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
         }
 
         function placeClicked(evt) {
+            modal.innerHTML =  `<div id='waiting-for-food-modal'>
+            <div class="loader"></div>'
+            <p id='loading-text-modal'>Loading your yummy results</p>
+          </div>`
             console.info(evt.target.value)
             let id = evt.target.value
             if(evt.target.id === 'modal-button'){
@@ -126,34 +130,29 @@ const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
             console.info('CreateModal is running')
             let modalText =  `    
             <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">${buis.name}</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-        <h3>${buis.location.address1} ${buis.location.address2} ${buis.location.ddress3}</h3>
-        <h3>${buis.location.city} ${buis.location.country}</h3>
-        <h4>${buis.phone}</h4>
-        <img class='img_modal' src='${buis.image_url}'>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save</button>
-        </div>
-      </div>
-    </div>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">${buis.name}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h3>${buis.location.address1} ${buis.location.address2} ${buis.location.ddress3}</h3>
+                        <h3>${buis.location.city} ${buis.location.country}</h3>
+                        <h4>${buis.phone}</h4>
+                        <img class='img_modal' src='${buis.image_url}'>
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save</button>
+                    </div>
+                </div>
+            </div>
         `
         modal.innerHTML = modalText
         
             return buis
-        }
-
-        
-        function displayModal(buis) {
-
         }
 
 
