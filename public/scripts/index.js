@@ -6,6 +6,7 @@ const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
     const userSearchData = {
         long: '',
         lat: '',
+        searchData: []
     }
     document.addEventListener('DOMContentLoaded', init)
 
@@ -21,6 +22,7 @@ const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
     function init() {
         corseAPI()
         const places = document.getElementById('places')
+        const modal = document.getElementById('my-modal')
         console.info('The DOM has loaded')
         geoFindMe()
         document.getElementById('search-form').addEventListener('submit', getUserInfo)
@@ -52,6 +54,7 @@ const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
                     }
                 })
                 .then(function (res) {
+                    userSearchData.searchData = res.businesses
                     return res.businesses
                 })
                 .then(displayData)
@@ -82,8 +85,10 @@ const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
                         <div class="card-img-overlay">
                             <h5 class="card-title">${res.name}</h5>
                             <p class="card-text">${res.price}</p>
-                            <button type="button" class="btn btn-primary" id="${res.id}">Press for More info</button>
-                        </div>
+                            <button type="button" id='modal-button' value='${res.id}'class="btn btn-primary" data-toggle="modal" data-target="#my-modal">
+                                For more info
+                            </button>
+                         </div>
                     </div>
             </div>
             `
@@ -97,33 +102,58 @@ const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
             console.info('this is the displayData', array)
             let newArray = array.map(createHTML)
             let displayArrray = newArray.join(' ')
+            console.info('This will display the object userSearchData', userSearchData)
             places.innerHTML = displayArrray
         }
+
         function placeClicked(evt) {
-            console.info(evt.target.id)
-            let id = evt.target.id
+            console.info(evt.target.value)
+            let id = evt.target.value
+            if(evt.target.id === 'modal-button'){
             $.ajax({
                     url: `https://api.yelp.com/v3/businesses/${id}`,
                     headers: {
                         'Authorization': `Bearer ${apiKey}`
                     }
                 })
-                .then(displayModal)
+                .then(createModal)
+            }
+            
+                
         }
 
+        function createModal(buis){
+            console.info('CreateModal is running')
+            let modalText =  `    
+            <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">${buis.name}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        <h3>${buis.location.address1} ${buis.location.address2} ${buis.location.ddress3}</h3>
+        <h3>${buis.location.city} ${buis.location.country}</h3>
+        <h4>${buis.phone}</h4>
+        <img class='img_modal' src='${buis.image_url}'>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save</button>
+        </div>
+      </div>
+    </div>
+        `
+        modal.innerHTML = modalText
+        
+            return buis
+        }
+
+        
         function displayModal(buis) {
-            console.info(buis)
-            return `
-            <div id="myModal" class="modal">
 
-                <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <p>Some text in the Modal..</p>
-                </div>
-
-            </div>
-
-            `
         }
 
 
@@ -160,7 +190,26 @@ const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
             navigator.geolocation.getCurrentPosition(success, error)
         }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
-
-
 })()
