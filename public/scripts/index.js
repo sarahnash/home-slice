@@ -10,21 +10,20 @@ const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
     }
     document.addEventListener('DOMContentLoaded', init)
 
-    function corseAPI() {
-        $.ajaxPrefilter(function (options) {
-            if (options.crossDomain && jQuery.support.cors) {
-                options.url = 'https://cors-anywhere.herokuapp.com/' + options.url
-            }
-
-        })
-    }
+    
 
     function init() {
+        window.location.hash = "#HomeSlice";
+        // Needed for the API to work
         corseAPI()
+        //The location in the DOM where the places will be rendered
         const places = document.getElementById('places')
+        // The modal for more information
         const modal = document.getElementById('my-modal')
         console.info('The DOM has loaded')
+        // Requesting to find the users location
         geoFindMe()
+
         document.getElementById('search-form').addEventListener('submit', getUserInfo)
         places.addEventListener('click', placeClicked)
 
@@ -34,18 +33,19 @@ const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
 
         function getUserInfo(evt) {
             evt.preventDefault()
+            //Puts the window to the places section of the page
             window.location.hash = "places";
-            places.innerHTML = `<div id='waiting-for-food'>
-            <div class="loader"></div>
-            <p id='loading-text'>Loading your yummy results</p>
-          </div>
-      `
+            // Loading screen while waiting for the API
+            places.innerHTML = `
+            <div id='waiting-for-food'>
+                <div class="loader"></div>
+                <p id='loading-text'>Loading your yummy results</p>
+            </div>
+            `
             let term = encodeURI(document.getElementById('search-bar').value.toLowerCase())
-            console.info(term)
-            console.info('This is userSearchData', userSearchData)
             getDetailedBuis(term)
         }
-
+        //Request from the YELP API 
         function getDetailedBuis(term) {
             $.ajax({
                     url: `https://api.yelp.com/v3/businesses/search?latitude=${userSearchData.lat}&longitude=${userSearchData.long}&term=${term}&limit=50`,
@@ -53,13 +53,9 @@ const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
                         'Authorization': `Bearer ${apiKey}`
                     }
                 })
-                .then(function (res) {
-                    userSearchData.searchData = res.businesses
-                    return res.businesses
-                })
                 .then(displayData)
                 .catch(function (error) {
-
+                    alert(error)
                 })
 
             // axios({
@@ -76,59 +72,53 @@ const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
             //     console.error(error)
             // })
         }
-
+        // Renders the results from YELP API
+        function displayData(res) {
+            let array = res.businesses
+            let newArray = array.map(createHTML)
+            let displayArrray = newArray.join(' ')
+            places.innerHTML = displayArrray
+        }
+        //Create the HTML card with the DATA for each
         function createHTML(res) {
             if (res) {
                 return `
-            <div class="card bg-dark text-white">
-                    <img class="card-img" src="${res.image_url}" alt="Card image">
-                        <div class="card-img-overlay">
-                            <h5 class="card-title">${res.name}</h5>
-                            <p class="card-text">${res.price}</p>
-                            <button type="button" id='modal-button' value='${res.id}'class="btn btn-primary" data-toggle="modal" data-target="#my-modal">
-                                For more info
-                            </button>
-                         </div>
-                    </div>
-            </div>
+                        <div class="card bg-dark text-white">
+                            <img class="card-img" src="${res.image_url}" alt="Card image">
+                            <div class="card-img-overlay">
+                                <h5 class="card-title">${res.name}</h5>
+                                <p class="card-text">${res.price}</p>
+                                <button type="button" id='modal-button' value='${res.id}'class="btn btn-primary" data-toggle="modal" data-target="#my-modal">
+                                    For more information
+                                </button>
+                            </div>
+                        </div>
             `
-
             }
-
         }
 
 
-        function displayData(array) {
-            console.info('this is the displayData', array)
-            let newArray = array.map(createHTML)
-            let displayArrray = newArray.join(' ')
-            console.info('This will display the object userSearchData', userSearchData)
-            places.innerHTML = displayArrray
-        }
-
+        //Function when the players click for more information 
         function placeClicked(evt) {
-            modal.innerHTML =  `<div id='waiting-for-food-modal'>
-            <div class="loader"></div>'
-            <p id='loading-text-modal'>Loading your yummy results</p>
-          </div>`
-            console.info(evt.target.value)
-            let id = evt.target.value
-            if(evt.target.id === 'modal-button'){
-            $.ajax({
-                    url: `https://api.yelp.com/v3/businesses/${id}`,
-                    headers: {
-                        'Authorization': `Bearer ${apiKey}`
-                    }
-                })
-                .then(createModal)
+            modal.innerHTML = waiting()
+            let value = evt.target.value
+            if (evt.target.id === 'modal-button') {
+                $.ajax({
+                        url: `https://api.yelp.com/v3/businesses/${value}`,
+                        headers: {
+                            'Authorization': `Bearer ${apiKey}`
+                        }
+                    })
+                    .then(createModal)
             }
-            
-                
-        }
 
-        function createModal(buis){
-            console.info('CreateModal is running')
-            let modalText =  `    
+
+        }
+        
+        //TODO
+        //Need to add more images
+        function createModal(buis) {
+            let modalText = `    
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -150,17 +140,17 @@ const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
                 </div>
             </div>
         `
-        modal.innerHTML = modalText
-        
+            modal.innerHTML = modalText
+
             return buis
         }
 
-
+        //Encodes users imput to put in for the API call
         function encodeURI(search) {
             let urlEncodedSearchString = encodeURIComponent(search)
             return urlEncodedSearchString
         }
-
+        //Function to find users location if given permision
         function geoFindMe() {
             let output = document.getElementById("places");
             console.info('GeoFindMe function has init')
@@ -187,6 +177,21 @@ const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
             }
             document.getElementById('search-form').style.display = 'none'
             navigator.geolocation.getCurrentPosition(success, error)
+        }
+        function corseAPI() {
+            $.ajaxPrefilter(function (options) {
+                if (options.crossDomain && jQuery.support.cors) {
+                    options.url = 'https://cors-anywhere.herokuapp.com/' + options.url
+                }
+    
+            })
+        }
+        //Function for a waiting symbol
+        function waiting(){
+            return `<div id='waiting-for-food-modal'>
+            <div class="loader"></div>'
+            <p id='loading-text-modal'>Loading your yummy results</p>
+          </div>`
         }
 
 
