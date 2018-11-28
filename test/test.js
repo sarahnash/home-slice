@@ -7,4 +7,8 @@ describe('Array', function () {
   })
 })
 
+var assert = require('chai').assert;
+var displayArray = []
+
+assert.isArray(displayArray, 'is array')
 // comment
