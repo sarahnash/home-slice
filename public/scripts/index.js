@@ -10,10 +10,6 @@ const userSearchData = {
         lat: ''
     }
 }
-<<<<<<< HEAD
-function() {
-=======
->>>>>>> b36a073a8ff986df392d84ba6d3405a2273a62ed
    
     document.addEventListener('DOMContentLoaded', init)
 
@@ -77,11 +73,11 @@ function() {
         function createHTML(res) {
             if (res) {
                 return `
-                        <div class="card bg-dark text-white">
-                            <img class="card-img" src="${res.image_url}" alt="Card image">
-                            <div class="card-img-overlay">
-                                <h5 class="card-title">${res.name}</h5>
-                                <p class="card-text">${res.price}</p>
+                <div class="card">
+                <img src="${res.image_url}"/>
+                  <div class="info">
+                    <h1>${res.name}</h1>
+                    <p>${res.price}</p>
                                 <button type="button" id='modal-button' value='${res.id}'class="btn btn-primary" data-toggle="modal" data-target="#my-modal">
                                     For more information
                                 </button>
