@@ -17,8 +17,8 @@
 <div id="map"></div>
 
 <script>
-    function initMap() {
-        const location = {lat: 29.760427, lng: -95.369804};
+    function initMap(startLat, startLng, array) {
+        const location = {lat: startLat, lng: startLng};
         const map = new google.maps.Map(document.getElementById("map"), {
             zoom: 11,
             center: location
@@ -39,7 +39,8 @@
         }) */
         
         //array of markers
-        const markers = [
+        for(let i = 0; i < array.length; i++){
+            const markers = [
             {
                 coords:{lat: 29.760427, lng: -95.369804},
                 iconImage: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
@@ -58,6 +59,8 @@
                 coords:{lat: 29.6955926, lng: -95.4172277} //Kroger
             }
         ];
+        }
+        
 
         //Loop through markers
         for(var i=0; i<markers.length; i++){
