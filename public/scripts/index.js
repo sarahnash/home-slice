@@ -15,7 +15,6 @@ const userSearchData = {
 
     
     function init() {
-        window.location.hash = "#HomeSlice";
         // Needed for the API to work
         // corseAPI()
         //The location in the DOM where the places will be rendered
@@ -114,7 +113,7 @@ const userSearchData = {
                 <h4>${buis.data.phone}</h4>
                 <img class='img_modal' src='${buis.data.image_url}'>
                  `
-
+            userSearchData.locationData.lat
 
 
             document.getElementById('the-modal-body').innerHTML = modalText
