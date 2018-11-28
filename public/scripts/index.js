@@ -122,16 +122,7 @@ const userSearchData = {
             let urlEncodedSearchString = encodeURIComponent(search)
             return urlEncodedSearchString
         }
-<<<<<<< HEAD
-      }
-        .then(function (res) {
-          return res
-        })
-        .catch(function (error) {
 
-=======
-      
->>>>>>> 0e5aa188382ac340ea06482f7c327335a06ea653
         function success(position) {
             document.getElementById('search-form').style.display = 'block'
             document.getElementById('waiting-for-location').style.display = 'none'
