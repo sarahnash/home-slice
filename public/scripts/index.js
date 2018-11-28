@@ -115,8 +115,12 @@ const userSearchData = {
                 <h4>${buis.data.phone}</h4>
                 <img class='img_modal' src='${buis.data.image_url}'>
                  `
+
+
+
             document.getElementById('the-modal-body').innerHTML = modalText
             document.getElementById('the-modal-title')
+            console.info(userSearchData)
             return buis
         }
 
