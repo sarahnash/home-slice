@@ -1,17 +1,21 @@
 const $ = window.jQuery
- const apiKey = `2tFurqRYbB_R4WkxVxs_74cZPMtIPu_9c62p69PmjCW6JEtH6_pm0XrSEqQqjYsP7aMQRE8RG9sYlcjbjcLjpUmea4hqSXaItF08axHXVF358SAxKUXTkDFLhm3wW3Yx`
- const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
- (function () {
- 
-     const userSearchData = {
-         long: '',
-         lat: '',
-         searchData: []
-     }
-     document.addEventListener('DOMContentLoaded', init)
- 
-     
- 
+const apiKey = `2tFurqRYbB_R4WkxVxs_74cZPMtIPu_9c62p69PmjCW6JEtH6_pm0XrSEqQqjYsP7aMQRE8RG9sYlcjbjcLjpUmea4hqSXaItF08axHXVF358SAxKUXTkDFLhm3wW3Yx`
+const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
+const userSearchData = {
+    long: '',
+    lat: '',
+    searchData: [],
+    locationData: {
+        long: '',
+        lat: ''
+    }
+}
+(function() {
+   
+    document.addEventListener('DOMContentLoaded', init)
+
+    
+
     function init() {
         window.location.hash = "#HomeSlice";
         // Needed for the API to work
@@ -124,7 +128,6 @@ const $ = window.jQuery
         }
       
         function success(position) {
-            console.info('Succes working')
             document.getElementById('search-form').style.display = 'block'
             document.getElementById('waiting-for-location').style.display = 'none'
             let latitude = position.coords.latitude
