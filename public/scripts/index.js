@@ -124,7 +124,7 @@ const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
                 <h3>${buis.data.location.city} ${buis.data.location.country}</h3>
                 <h4>${buis.data.phone}</h4>
                 <img class='img_modal' src='${buis.data.image_url}'>
-        `
+                 `
             document.getElementById('the-modal-body').innerHTML = modalText
             document.getElementById('the-modal-title')
             return buis
