@@ -1,12 +1,13 @@
 const $ = window.jQuery
 const apiKey = `2tFurqRYbB_R4WkxVxs_74cZPMtIPu_9c62p69PmjCW6JEtH6_pm0XrSEqQqjYsP7aMQRE8RG9sYlcjbjcLjpUmea4hqSXaItF08axHXVF358SAxKUXTkDFLhm3wW3Yx`
 const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
-
-    const userSearchData = {
-        long: '',
-        lat: '',
-        searchData: []
-    }
+const userSearchData = {
+    long: '',
+    lat: '',
+    searchData: []
+}
+(function() {
+   
     document.addEventListener('DOMContentLoaded', init)
 
     
@@ -47,17 +48,6 @@ const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
         }
         //Request from the YELP API 
         function getDetailedBuis(term) {
-            // $.ajax({
-            //         url: `https://api.yelp.com/v3/businesses/search?latitude=${userSearchData.lat}&longitude=${userSearchData.long}&term=${term}&limit=50`,
-            //         headers: {
-            //             'Authorization': `Bearer ${apiKey}`
-            //         }
-            //     })
-            //     .then(displayData)
-            //     .catch(function (error) {
-            //         alert(error)
-            //     })
-
             axios({
                 url: `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?latitude=${userSearchData.lat}&longitude=${userSearchData.long}&term=${term}&limit=50`,
                 headers:{
@@ -109,8 +99,6 @@ const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
                     })
                     .then(createModal)
             }
-
-
         }
         
         //TODO
@@ -123,7 +111,7 @@ const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
                 <h3>${buis.data.location.city} ${buis.data.location.country}</h3>
                 <h4>${buis.data.phone}</h4>
                 <img class='img_modal' src='${buis.data.image_url}'>
-        `
+                 `
             document.getElementById('the-modal-body').innerHTML = modalText
             document.getElementById('the-modal-title')
             return buis
@@ -134,12 +122,7 @@ const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
             let urlEncodedSearchString = encodeURIComponent(search)
             return urlEncodedSearchString
         }
-      })
-        .then(function (res) {
-          return res
-        })
-        .catch(function (error) {
-
+      
         function success(position) {
             document.getElementById('search-form').style.display = 'block'
             document.getElementById('waiting-for-location').style.display = 'none'
@@ -155,11 +138,6 @@ const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
         function geoFindMe() {
             let output = document.getElementById("places");
             console.info('GeoFindMe function has init')
-
-    function displayModal (evt) {
-      console.info(evt.target)
-      geoFindMe()
-    }
 
             function error() {
                 alert('Unable to locate position please reload the page')
@@ -182,19 +160,6 @@ const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
             <p id='loading-text-modal'>Loading your yummy results</p>
           </div>`
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     }
