@@ -1,7 +1,6 @@
 const $ = window.jQuery
 const apiKey = `2tFurqRYbB_R4WkxVxs_74cZPMtIPu_9c62p69PmjCW6JEtH6_pm0XrSEqQqjYsP7aMQRE8RG9sYlcjbjcLjpUmea4hqSXaItF08axHXVF358SAxKUXTkDFLhm3wW3Yx`
 const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
-(function () {
 
     const userSearchData = {
         long: '',
@@ -135,6 +134,11 @@ const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
             let urlEncodedSearchString = encodeURIComponent(search)
             return urlEncodedSearchString
         }
+      })
+        .then(function (res) {
+          return res
+        })
+        .catch(function (error) {
 
         function success(position) {
             document.getElementById('search-form').style.display = 'block'
@@ -152,10 +156,10 @@ const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
             let output = document.getElementById("places");
             console.info('GeoFindMe function has init')
 
-            if (!navigator.geolocation) {
-                ALERT('Geolocation is not supported by your browser')
-                return;
-            }
+    function displayModal (evt) {
+      console.info(evt.target)
+      geoFindMe()
+    }
 
             function error() {
                 alert('Unable to locate position please reload the page')

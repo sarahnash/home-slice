@@ -67,3 +67,6 @@ node_modules/
 # ignoring firebase files
 .firebaserc
 firebase.json
+
+# ignoring this file
+.DS_Store
