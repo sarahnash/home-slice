@@ -12,6 +12,8 @@
   text-align: center;
   transition: transform 0.8s;
   transform-style: preserve-3d;
+  object-fit: cover;
+  /* overflow: hidden; */
 }
 
 /* Do an horizontal flip when you move the mouse over the flip box container */
@@ -30,4 +32,8 @@
 /* Style the back side */
 .flip-card-back {
   transform: rotateY(180deg);
+}
+
+.profile {
+  margin-top: 300px;
 }
