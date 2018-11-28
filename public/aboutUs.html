@@ -7,55 +7,140 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="../styles/homepage.css">
         <title>Meet the team!</title></head>
-    <body>
-        <h1>The Homeslice team</h1>
-        <br>
-        <div class="flex-container" style="display: flex; justify-content: space-evenly;">
-          <div class="card" style="flex: 1;">
-            <img class="card-img-top" src="" alt="rogers picture">
-                 <div class="card-body">
-                     <h4 class="card-title">RogerP</h4>
-                     <p class="card-text">something about Roger, LinkedIn? github?</p>
-                 </div>
-          </div>  
-          <div class="card" style="flex: 1;">
-           <img class="card-img-top" src="img/headshotnew.jpeg" alt="sarahs picture">
-                <div class="card-body">
-                    <h4 class="card-title">Sarah Nash</h4>
-                    <p class="card-text">something about Sarah, LinkedIn? github?</p>
+        <link href="styles/aboutus.css" rel="stylesheet">
+
+<body>
+    <!-- NAV BAR -->
+    <nav class="navbar navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand font-weight-bold" href="index.html"><i class="fas fa-search-location"></i> HomeSlice</a> 
+
+    <!-- NAV BAR SIGN IN/ SIGN UP -->
+        <div class="dropdown">
+        <button aria-expanded="false" aria-haspopup="true" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" id="dropdownMenu2" type="button">Sign In or Sign Up</button> 
+
+    <!--  drop down menu for Sign In/ Sign Up -->
+        <div aria-labelledby="dropdownMenu2" class="dropdown-menu dropdown-menu-right">
+            <form class="px-4 py-3">
+            <div class="form-group">
+                <label for="exampleDropdownFormEmail1">Email address</label> <input class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com" type="email">
+            <div class="form-group">
+                <label for="exampleDropdownFormPassword1">Password</label> <input class="form-control" id="exampleDropdownFormPassword1" placeholder="Password" type="password">
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" id="dropdownCheck" type="checkbox"> <label class="form-check-label" for="dropdownCheck">Remember me</label>
+            </div><button class="btn btn-primary" type="submit">Sign in</button>
+            </form>
+            <div class="dropdown-divider"></div><a class="dropdown-item" href="#">New around here? Sign up</a> <a class="dropdown-item" href="#">Forgot password?</a>
+        </div>
+        </div>
+    </nav>
+
+    <!--  Team flip cards -->
+
+    <div class="flex-container" style="display: flex; justify-content: space-evenly; padding-top: 100px;">
+        <div class="col-sm">
+            <div class="d-flex separate" style="flex-direction: column;">
+                <div class="d-flex flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img class="card-img-top flipimg" src="img/headshotnew.jpeg" alt="rogers picture">
+                        </div>
+                        <div class="flip-card-back">
+                            <img class="card-img" src="img/rogersalterego.jpg" alt="rogers alter ego">
+                        </div>
+                    </div>  
                 </div>
             </div>
-
-            <div class="card" style="flex: 1;">
-                <img class="card-img-top" src="../img/Luis.png" alt="Luis' picture">
-                <div class="card-body">
-                    <h4 class="card-title">KimJ</h4>
-                    <p class="card-text">something about Kim, LinkedIn? github?</p>
+                <div class="d-flex profile">
+                    <h4 class="title" style="font-weight: bold;">Roger Perrett</h4>
+                    <p class="text">Roger contributed...</p>
+                    <a href="https://www.linkedin.com/in/giang-nguyen-b29a3a97/"><img src="img/linkedin.png" title="LinkedIn" width="30" height="30" /></a>
+                    <a href="https://github.com/rogerperrett"><img src="img/git.png" title="GitHub" width="30" height="30" /></a>
                 </div>
+        </div>
+
+        <div class="col-sm">
+            <div class="d-flex flip-card" style="flex: 1;">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img class="card-img-top flipimg" src="img/headshotnew.jpeg" alt="sarahs picture">
+                        <div class="card-body">
+                            <h4 class="card-title" style="font-weight: bold;">Sarah Nash</h4>
+                            <p class="card-text">Sarah contributed to the GitHub repo, Travis CI Build, deployment on Firebase, About Us HTML, and ...</p>
+                            <a href="https://www.linkedin.com/in/snashhtx/"><img src="img/linkedin.png" title="LinkedIn" width="30" height="30" /></a>
+                            <a href="https://github.com/sarahnash"><img src="img/git.png" title="GitHub" width="30" height="30" /></a>
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <img class="card-img" src="img/banana.jpg" alt="sarahs alter ego">
+                    </div>
+                </div>  
             </div>
+        </div>
 
-            <div class="card" style="flex: 1;">
-                <img class="card-img-top" src="../img/Derrick.png" alt="Derrick's picture">
-                <div class="card-body">
-                    <h4 class="card-title">Elizabeth</h4>
-                    <p class="card-text">something about Elizabeth, LinkedIn? github?</p>
-                </div>
+
+        <div class="col-sm">
+            <div class="d-flex flip-card" style="flex: 1;">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img class="card-img-top flipimg" src="img/headshotnew.jpeg" alt="rogers picture">
+                        <div class="card-body">
+                            <h4 class="card-title" style="font-weight: bold;">Roger Perrett</h4>
+                            <p class="card-text">Roger contributed...</p>
+                            <a href="https://www.linkedin.com/in/giang-nguyen-b29a3a97/"><img src="img/linkedin.png" title="LinkedIn" width="30" height="30" /></a>
+                            <a href="https://github.com/rogerperrett"><img src="img/git.png" title="GitHub" width="30" height="30" /></a>
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <img class="card-img" src="img/rogersalterego.jpg" alt="rogers alter ego">
+                    </div>
+                </div>  
             </div>
+        </div>
 
-            <div class="card" style="flex: 1;">
-                <img class="card-img-top" src="../img/9-18.jpg" alt="Audrey's picture">
-                <div class="card-body">
-                    <h4 class="card-title">Audrey Nguyen</h4>
-                    <p class="card-text">something about audrey, LinkedIn? github?</p>
+        <div class="col-sm">
+            <div class="d-flex flip-card" style="flex: 1;">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img class="card-img-top flipimg" src="img/headshotnew.jpeg" alt="rogers picture">
+                        <div class="card-body">
+                            <h4 class="card-title" style="font-weight: bold;">Roger Perrett</h4>
+                            <p class="card-text">Roger contributed...</p>
+                            <a href="https://www.linkedin.com/in/giang-nguyen-b29a3a97/"><img src="img/linkedin.png" title="LinkedIn" width="30" height="30" /></a>
+                            <a href="https://github.com/rogerperrett"><img src="img/git.png" title="GitHub" width="30" height="30" /></a>
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <img class="card-img" src="img/rogersalterego.jpg" alt="rogers alter ego">
+                    </div>
                 </div>
+            </div>  
+        </div>
+
+        <div class="col-sm">
+            <div class="d-flex flip-card" style="flex: 1;">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img class="card-img-top flipimg" src="../public/img/9-18square.jpg" alt="audreys picture">
+                        <div class="card-body">
+                            <h4 class="card-title" style="font-weight: bold;">Audrey Nguyen</h4>
+                            <p class="card-text">Audrey contributed...</p>
+                            <a href="https://www.linkedin.com/in/giang-nguyen-b29a3a97/"><img src="img/linkedin.png" title="LinkedIn" width="30" height="30" /></a>
+                            <a href="https://github.com/gwin333"><img src="img/git.png" title="GitHub" width="30" height="30" /></a>
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                            <img class="card-img" src="img/rogersalterego.jpg" alt="rogers alter ego">
+                    </div>
+                </div>  
             </div>
         </div>
 
     <!-- jquery stuff to run -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>   
     </body>
+    
 </html>
