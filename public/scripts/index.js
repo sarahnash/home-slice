@@ -65,14 +65,32 @@ const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
     }
     function displayTheData(res){
       if(res){
-      return `<div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="${res.image_url}" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">${res.name}</h5>
-        <p class="card-text">${res.price}.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>`
+          return`
+        <div class="card">
+        <img src="${res.image_url}"/>
+          <div class="info">
+            <h1>${res.name}</h1>
+            <p>${res.price}</p>
+            <button>More Info</button>
+            </div>
+      </div>`
+
+
+
+
+
+
+
+
+        
+    //   return `<div class="card" style="width: 18rem;">
+    //   <img class="card-img-top" src="${res.image_url}" alt="Card image cap">
+    //   <div class="card-body">
+    //     <h5 class="card-title">${res.name}</h5>
+    //     <p class="card-text">${res.price}.</p>
+    //     <a href="#" class="btn btn-primary">Go somewhere</a>
+    //   </div>
+    // </div>`
       }
     }
     function giveBuisInfo(array){
