@@ -134,7 +134,7 @@ const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
             let urlEncodedSearchString = encodeURIComponent(search)
             return urlEncodedSearchString
         }
-      })
+      }
         .then(function (res) {
           return res
         })
