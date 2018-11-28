@@ -10,7 +10,6 @@ const userSearchData = {
         lat: ''
     }
 }
-(function() {
    
     document.addEventListener('DOMContentLoaded', init)
 
@@ -33,7 +32,7 @@ const userSearchData = {
         places.addEventListener('click', placeClicked)
 
         //--------------------
-        // Functions to get information from API and render the results from it
+        // Functions to get information from API and render the results from itgit 
         //Obtain the information for search
 
         function getUserInfo(evt) {
@@ -167,4 +166,3 @@ const userSearchData = {
 
 
     }
-})()
