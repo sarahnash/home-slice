@@ -6,12 +6,11 @@ const userSearchData = {
     lat: '',
     searchData: []
 }
-(function() {
+function() {
    
     document.addEventListener('DOMContentLoaded', init)
 
     
-
     function init() {
         window.location.hash = "#HomeSlice";
         // Needed for the API to work
@@ -122,7 +121,7 @@ const userSearchData = {
             let urlEncodedSearchString = encodeURIComponent(search)
             return urlEncodedSearchString
         }
-
+      
         function success(position) {
             document.getElementById('search-form').style.display = 'block'
             document.getElementById('waiting-for-location').style.display = 'none'
