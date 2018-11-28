@@ -1,5 +1,5 @@
 function initMap() {
-    const location = {lat: 29.760427, lng: -95.369804};
+    const location = {lat: userSearchData.lat, lng: userSearchData.long};
     const map = new google.maps.Map(document.getElementById("map"), {
         zoom: 11,
         center: location
@@ -20,18 +20,12 @@ function initMap() {
     //array of markers
     const markers = [
         {
-            coords:{lat: userSearchData.lat, lng: userSearchData.long},
+            coords:{lat: 29.7528742, lng: -95.3412637},
             iconImage: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
             content: '<h1>Houston Center</h1>'
         },
         {
-            coords:{lat: 29.6364861, lng: -95.5195918}, //home
-        },
-        {
             coords:{lat: 29.7528742, lng: -95.3412637} //DigitalCrafts
-        },
-        {
-            coords:{lat: 29.760046, lng: -95.4642023} //TK
         },
         {
             coords:{lat: 29.6955926, lng: -95.4172277} //Kroger
