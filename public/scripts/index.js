@@ -1,17 +1,17 @@
 const $ = window.jQuery
-const apiKey = `2tFurqRYbB_R4WkxVxs_74cZPMtIPu_9c62p69PmjCW6JEtH6_pm0XrSEqQqjYsP7aMQRE8RG9sYlcjbjcLjpUmea4hqSXaItF08axHXVF358SAxKUXTkDFLhm3wW3Yx`
-const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
-const userSearchData = {
-    long: '',
-    lat: '',
-    searchData: []
-}
-(function() {
-   
-    document.addEventListener('DOMContentLoaded', init)
-
-    
-
+ const apiKey = `2tFurqRYbB_R4WkxVxs_74cZPMtIPu_9c62p69PmjCW6JEtH6_pm0XrSEqQqjYsP7aMQRE8RG9sYlcjbjcLjpUmea4hqSXaItF08axHXVF358SAxKUXTkDFLhm3wW3Yx`
+ const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
+ (function () {
+ 
+     const userSearchData = {
+         long: '',
+         lat: '',
+         searchData: []
+     }
+     document.addEventListener('DOMContentLoaded', init)
+ 
+     
+ 
     function init() {
         window.location.hash = "#HomeSlice";
         // Needed for the API to work
@@ -105,7 +105,7 @@ const userSearchData = {
         //Need to add more images
         //TODO LIST
         function createModal(buis) {
-            
+            console.info(buis.data)
             let modalText = `    
                 <h3>${buis.data.location.address1} ${buis.data.location.address2} ${buis.data.location.ddress3}</h3>
                 <h3>${buis.data.location.city} ${buis.data.location.country}</h3>
@@ -124,6 +124,7 @@ const userSearchData = {
         }
       
         function success(position) {
+            console.info('Succes working')
             document.getElementById('search-form').style.display = 'block'
             document.getElementById('waiting-for-location').style.display = 'none'
             let latitude = position.coords.latitude
