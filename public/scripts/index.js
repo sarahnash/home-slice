@@ -14,7 +14,6 @@ const userSearchData = {
     document.addEventListener('DOMContentLoaded', init)
 
     
-
     function init() {
         window.location.hash = "#HomeSlice";
         // Needed for the API to work
@@ -73,11 +72,11 @@ const userSearchData = {
         function createHTML(res) {
             if (res) {
                 return `
-                        <div class="card bg-dark text-white">
-                            <img class="card-img" src="${res.image_url}" alt="Card image">
-                            <div class="card-img-overlay">
-                                <h5 class="card-title">${res.name}</h5>
-                                <p class="card-text">${res.price}</p>
+                <div class="card">
+                <img src="${res.image_url}"/>
+                  <div class="info">
+                    <h1>${res.name}</h1>
+                    <p>${res.price}</p>
                                 <button type="button" id='modal-button' value='${res.id}'class="btn btn-primary" data-toggle="modal" data-target="#my-modal">
                                     For more information
                                 </button>
@@ -115,8 +114,12 @@ const userSearchData = {
                 <h4>${buis.data.phone}</h4>
                 <img class='img_modal' src='${buis.data.image_url}'>
                  `
+
+
+
             document.getElementById('the-modal-body').innerHTML = modalText
             document.getElementById('the-modal-title')
+            console.info(userSearchData)
             return buis
         }
 
