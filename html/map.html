@@ -15,10 +15,9 @@
 </head>
 <body>
 <div id="map"></div>
-
 <script>
-    function initMap(startLat, startLng, array) {
-        const location = {lat: startLat, lng: startLng};
+    function initMap() {
+        const location = {lat: 29.760427, lng: -95.369804};
         const map = new google.maps.Map(document.getElementById("map"), {
             zoom: 11,
             center: location
@@ -29,18 +28,15 @@
             map: map //map we want to add marker to
             icon: ''
         });
-
         const infoWindow = new google.maps.InfoWindow({
             content: '<h1>Houston Places</h1>'
         });
-
         marker.addListener('click', function(){
             infoWindow.open(map, marker);
         }) */
         
         //array of markers
-        for(let i = 0; i < array.length; i++){
-            const markers = [
+        const markers = [
             {
                 coords:{lat: 29.760427, lng: -95.369804},
                 iconImage: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
@@ -59,14 +55,10 @@
                 coords:{lat: 29.6955926, lng: -95.4172277} //Kroger
             }
         ];
-        }
-        
-
         //Loop through markers
         for(var i=0; i<markers.length; i++){
                 addMarker(markers[i]); //calling the function
         }
-
         // Add Marker Function
         function addMarker(props){
             const marker = new google.maps.Marker({
@@ -74,19 +66,16 @@
             map: map, //map we want to add marker to
             // icon: props.iconImage
         });
-
         //check for custom icon
         if(props.iconImage){
             // Set icon image so that we don't have undefined value if no specific icon
             marker.setIcon(props.iconImage);
         }
-
         //check for content
         if(props.content){
             const infoWindow = new google.maps.InfoWindow({
             content: props.content
         });
-
         marker.addListener('click', function(){
             infoWindow.open(map, marker);
         })
@@ -94,11 +83,9 @@
         }
     }
 </script>
-
-
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALBC9slurNsHnNRwnHnhI_whyec0CgtRg&callback=initMap"
 type="text/javascript"></script>
-
-
+<!-- <script async defer src="https://maps.googleapis.com/maps/api/place/autocomplete/xml?input=school&types=establishment&location=29.760427,-95.369804&radius=50&key=AIzaSyALBC9slurNsHnNRwnHnhI_whyec0CgtRg"
+type="text/javascript"></script> doesn't work --> 
 </body>
 </html>
