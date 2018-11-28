@@ -21,8 +21,6 @@ const userSearchData = {
         // corseAPI()
         //The location in the DOM where the places will be rendered
         const places = document.getElementById('places')
-        // The modal for more information
-        const modal = document.getElementById('my-modal')
         console.info('The DOM has loaded')
         // Requesting to find the users location
         geoFindMe()
@@ -63,6 +61,7 @@ const userSearchData = {
         }
         // Renders the results from YELP API
         function displayData(res) {
+            console.info(userSearchData)
             console.info(res)
             let array = res.data.businesses
             console.info(array)
@@ -91,8 +90,9 @@ const userSearchData = {
 
         //Function when the players click for more information 
         function placeClicked(evt) {
-            modal.innerHTML = waiting()
+            document.getElementById('the-modal-body').innerHTML = waiting()
             let value = evt.target.value
+            console.log(value)
             if (evt.target.id === 'modal-button') {
                 axios({
                         url: `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/${value}`,
