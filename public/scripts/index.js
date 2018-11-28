@@ -15,7 +15,7 @@ const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
     function init() {
         window.location.hash = "#HomeSlice";
         // Needed for the API to work
-        corseAPI()
+        // corseAPI()
         //The location in the DOM where the places will be rendered
         const places = document.getElementById('places')
         // The modal for more information
@@ -23,6 +23,7 @@ const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
         console.info('The DOM has loaded')
         // Requesting to find the users location
         geoFindMe()
+        // if true in local storage, just run success, otherwise run goFindMe
 
         document.getElementById('search-form').addEventListener('submit', getUserInfo)
         places.addEventListener('click', placeClicked)
@@ -47,34 +48,32 @@ const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
         }
         //Request from the YELP API 
         function getDetailedBuis(term) {
-            $.ajax({
-                    url: `https://api.yelp.com/v3/businesses/search?latitude=${userSearchData.lat}&longitude=${userSearchData.long}&term=${term}&limit=50`,
-                    headers: {
-                        'Authorization': `Bearer ${apiKey}`
-                    }
-                })
-                .then(displayData)
-                .catch(function (error) {
-                    alert(error)
-                })
+            // $.ajax({
+            //         url: `https://api.yelp.com/v3/businesses/search?latitude=${userSearchData.lat}&longitude=${userSearchData.long}&term=${term}&limit=50`,
+            //         headers: {
+            //             'Authorization': `Bearer ${apiKey}`
+            //         }
+            //     })
+            //     .then(displayData)
+            //     .catch(function (error) {
+            //         alert(error)
+            //     })
 
-            // axios({
-            //     url: `https://api.yelp.com/v3/businesses/search?latitude=${userSearchData.lat}&longitude=${userSearchData.long}&term=${term}&limit=50`,
-            //     headers:{
-            //         'Authorization': `${apiKey}`
-            //     }
-            // })
-            // .then(function (res) {
-            //     return res.businesses
-            // })
-            // .then(displayData)
-            // .catch(function (error){
-            //     console.error(error)
-            // })
+            axios({
+                url: `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?latitude=${userSearchData.lat}&longitude=${userSearchData.long}&term=${term}&limit=50`,
+                headers:{
+                    'Authorization': `Bearer ${apiKey}`
+                }
+            })
+            .then(displayData)
+        
+
         }
         // Renders the results from YELP API
         function displayData(res) {
-            let array = res.businesses
+            console.info(res)
+            let array = res.data.businesses
+            console.info(array)
             let newArray = array.map(createHTML)
             let displayArrray = newArray.join(' ')
             places.innerHTML = displayArrray
@@ -103,8 +102,8 @@ const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
             modal.innerHTML = waiting()
             let value = evt.target.value
             if (evt.target.id === 'modal-button') {
-                $.ajax({
-                        url: `https://api.yelp.com/v3/businesses/${value}`,
+                axios({
+                        url: `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/${value}`,
                         headers: {
                             'Authorization': `Bearer ${apiKey}`
                         }
@@ -117,31 +116,17 @@ const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
         
         //TODO
         //Need to add more images
+        //TODO LIST
         function createModal(buis) {
+            
             let modalText = `    
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">${buis.name}</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <h3>${buis.location.address1} ${buis.location.address2} ${buis.location.ddress3}</h3>
-                        <h3>${buis.location.city} ${buis.location.country}</h3>
-                        <h4>${buis.phone}</h4>
-                        <img class='img_modal' src='${buis.image_url}'>
-                        </div>
-                        <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save</button>
-                    </div>
-                </div>
-            </div>
+                <h3>${buis.data.location.address1} ${buis.data.location.address2} ${buis.data.location.ddress3}</h3>
+                <h3>${buis.data.location.city} ${buis.data.location.country}</h3>
+                <h4>${buis.data.phone}</h4>
+                <img class='img_modal' src='${buis.data.image_url}'>
         `
-            modal.innerHTML = modalText
-
+            document.getElementById('the-modal-body').innerHTML = modalText
+            document.getElementById('the-modal-title')
             return buis
         }
 
@@ -150,6 +135,18 @@ const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
             let urlEncodedSearchString = encodeURIComponent(search)
             return urlEncodedSearchString
         }
+
+        function success(position) {
+            document.getElementById('search-form').style.display = 'block'
+            document.getElementById('waiting-for-location').style.display = 'none'
+            let latitude = position.coords.latitude
+            let longitude = position.coords.longitude
+            userSearchData.lat = latitude
+            userSearchData.long = longitude
+            console.info(userSearchData)
+            // save to loal storage true
+        }
+
         //Function to find users location if given permision
         function geoFindMe() {
             let output = document.getElementById("places");
@@ -160,32 +157,20 @@ const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
                 return;
             }
 
-            function success(position) {
-                document.getElementById('search-form').style.display = 'block'
-                document.getElementById('waiting-for-location').style.display = 'none'
-                let latitude = position.coords.latitude
-                let longitude = position.coords.longitude
-                userSearchData.lat = latitude
-                userSearchData.long = longitude
-                console.info(userSearchData)
-
-
-            }
-
             function error() {
                 alert('Unable to locate position please reload the page')
             }
             document.getElementById('search-form').style.display = 'none'
             navigator.geolocation.getCurrentPosition(success, error)
         }
-        function corseAPI() {
-            $.ajaxPrefilter(function (options) {
-                if (options.crossDomain && jQuery.support.cors) {
-                    options.url = 'https://cors-anywhere.herokuapp.com/' + options.url
-                }
+        // function corseAPI() {
+        //     $.ajaxPrefilter(function (options) {
+        //         if (options.crossDomain && jQuery.support.cors) {
+        //             options.url = 'https://cors-anywhere.herokuapp.com/' + options.url
+        //         }
     
-            })
-        }
+        //     })
+        // }
         //Function for a waiting symbol
         function waiting(){
             return `<div id='waiting-for-food-modal'>
