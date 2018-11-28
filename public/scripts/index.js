@@ -4,9 +4,16 @@ const clientID = `6PaudvUaHDgnvmwq8HFv5w`;
 const userSearchData = {
     long: '',
     lat: '',
-    searchData: []
+    searchData: [],
+    locationData: {
+        long: '',
+        lat: ''
+    }
 }
+<<<<<<< HEAD
 function() {
+=======
+>>>>>>> b36a073a8ff986df392d84ba6d3405a2273a62ed
    
     document.addEventListener('DOMContentLoaded', init)
 
@@ -28,7 +35,7 @@ function() {
         places.addEventListener('click', placeClicked)
 
         //--------------------
-        // Functions to get information from API and render the results from it
+        // Functions to get information from API and render the results from itgit 
         //Obtain the information for search
 
         function getUserInfo(evt) {
@@ -104,7 +111,7 @@ function() {
         //Need to add more images
         //TODO LIST
         function createModal(buis) {
-            
+            console.info(buis.data)
             let modalText = `    
                 <h3>${buis.data.location.address1} ${buis.data.location.address2} ${buis.data.location.ddress3}</h3>
                 <h3>${buis.data.location.city} ${buis.data.location.country}</h3>
@@ -162,4 +169,3 @@ function() {
 
 
     }
-})()
