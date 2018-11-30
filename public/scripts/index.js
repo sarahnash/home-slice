@@ -91,6 +91,7 @@ function init() {
                   <div class="info">
                     <h1>${res.name}</h1>
                     <p>${res.price}</p>
+
                                 <button type="button" id='modal-button' value='${
                                   res.id
                                 }'class="btn btn-primary" data-toggle="modal" data-target="#my-modal">
