@@ -11,5 +11,3 @@ describe('Rendering', function() {
     assert.equal( createHTML(dataObject),`<div class="card bg-dark text-white"><img class="card-img" src="www.banana.com" alt="Card image"><div class="card-img-overlay"><h5 class="card-title">oakman</h5><p class="card-text">100</p></div></div>`)
   })
 })
-
-// please work
