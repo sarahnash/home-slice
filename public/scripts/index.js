@@ -151,12 +151,14 @@ function init() {
     }</h3>
                 <h4>${buis.data.phone}</h4>
                 <img class='img_modal' src='${buis.data.image_url}'>
+                
                  `;
     userSearchData.locationData.lat;
-
+    createMarkers([{lat: buis.data.coordinates.latitude, lng: buis.data.coordinates.longitude}])
     document.getElementById("the-modal-body").innerHTML = modalText;
     document.getElementById("the-modal-title");
     console.info(userSearchData);
+
     return buis;
   }
 
@@ -165,13 +167,14 @@ function init() {
     let urlEncodedSearchString = encodeURIComponent(search);
     return urlEncodedSearchString;
   }
-
   function success(position) {
     document.getElementById("search-form").style.display = "block"
     let latitude = position.coords.latitude
     let longitude = position.coords.longitude
     userSearchData.lat = latitude
     userSearchData.long = longitude
+    console.log(map)
+    map.setCenter({lat: userSearchData.lat, lng: userSearchData.long})
     getBuisDataCoordinates()
     console.info(userSearchData)
     // save to loal storage true
