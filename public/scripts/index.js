@@ -197,4 +197,5 @@ function init() {
             <p id='loading-text-modal'>Loading your yummy results</p>
           </div>`;
   }
+
 }
