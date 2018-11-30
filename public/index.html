@@ -20,7 +20,11 @@
       data-target="#navbarsExample01" data-toggle="collapse" type="button"></button>
 
     <!-- NAV BAR SIGN IN/ SIGN UP -->
+
+    <div >
+
     <div class='dropdown'>
+
       <button aria-expanded="false" aria-haspopup="true" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
         id="dropdownMenu2" type="button">Sign In or Sign Up</button>
 
@@ -149,8 +153,15 @@
   <script src='scripts/index.js'></script>
 
 
+<script>$('#btn-id').click(function(e){
+  e.stopPropagation()
+});</script>
+  <!-- comment -->
+
+
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALBC9slurNsHnNRwnHnhI_whyec0CgtRg&callback=initMap"
 type="text/javascript"></script>
+
 
 
 </body>
