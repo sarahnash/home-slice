@@ -4,6 +4,7 @@ function initMap() {
         zoom: 11,
         center: location
     });
+
     /* ADD SINGLE MARKER
     const marker = new google.maps.Marker({
         position: {lat:29.760427,lng:-95.369804},
@@ -19,11 +20,12 @@ function initMap() {
     
     //array of markers
     const markers = [
-        {
-            coords:{lat: 29.7528742, lng: -95.3412637},
-            iconImage: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
-            content: '<h1>Houston Center</h1>'
-        },
+        // {
+        //     coords:{lat: 29.7528742, lng: -95.3412637},
+        //     // iconImage: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+        //     iconImage: 'https://www.clipartsfree.net/vector/small/55520-head-symbol-yellow-person-icon.png',
+        //     content: '<h1>You are here</h1>'
+        // },
         {
             coords:{lat: 29.7528742, lng: -95.3412637} //DigitalCrafts
         },
