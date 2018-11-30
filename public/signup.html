@@ -8,29 +8,30 @@
        * TODO(DEVELOPER): Paste the initialization snippet from:
        * Firebase Console > Overview > Add Firebase to your web app. *
        ***************************************************************************************** -->
-       <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
-<script>
- // Initialize Firebase
- var config = {
-   apiKey: "AIzaSyCOoHqoX14FEgEm8g7Xc1hbX4uSJfjJSkQ",
-   authDomain: "homeslice-5fb59.firebaseapp.com",
-   databaseURL: "https://homeslice-5fb59.firebaseio.com",
-   projectId: "homeslice-5fb59",
-   storageBucket: "",
-   messagingSenderId: "720353057393"
- };
- firebase.initializeApp(config);
-</script>
+
+       <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase.js"></script>
+       <link href="styles/style.css" rel="stylesheet">
+       <script>
+         // Initialize Firebase
+         var config = {
+           apiKey: "AIzaSyCOoHqoX14FEgEm8g7Xc1hbX4uSJfjJSkQ",
+           authDomain: "homeslice-5fb59.firebaseapp.com",
+           databaseURL: "https://homeslice-5fb59.firebaseio.com",
+           projectId: "homeslice-5fb59",
+           storageBucket: "homeslice-5fb59.appspot.com",
+           messagingSenderId: "720353057393"
+         };
+         firebase.initializeApp(config);
+       </script>
     <script src="https://cdn.firebase.com/libs/firebaseui/3.4.1/firebaseui.js"></script>
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.4.1/firebaseui.css" />
     <script type="text/javascript">
       // FirebaseUI config.
       var uiConfig = {
-          //TODO ADD SIGN IN SUCCESS URL
-        signInSuccessUrl: ``,
+        signInSuccessUrl: 'index.html',
         signInOptions: [
           // Leave the lines as is for the providers you want to offer your users.
-          // firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+          firebase.auth.GoogleAuthProvider.PROVIDER_ID,
         //   firebase.auth.FacebookAuthProvider.PROVIDER_ID,
         //   firebase.auth.TwitterAuthProvider.PROVIDER_ID,
         //   firebase.auth.GithubAuthProvider.PROVIDER_ID,
@@ -58,7 +59,12 @@
   <body>
     <!-- The surrounding HTML is left untouched by FirebaseUI.
          Your app may use that space for branding, controls and other customizations.-->
+    <h1 class="signUp">Sign Up</h1>
     <div id="firebaseui-auth-container"></div>
+<<<<<<< HEAD:public/signup.html
     <script src='signup.html'></script>
+=======
+ 
+>>>>>>> 77fcd4ccf9e81b734796e9f5fe5d39e230fd5866:public/signup.html
   </body>
 </html>
