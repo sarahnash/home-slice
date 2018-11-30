@@ -8,7 +8,7 @@ const userSearchData = {
   locationData: {
     long: "",
     lat: "",
-    lcoation: ''
+    location: ''
   },
   term: ""
 };
@@ -57,7 +57,10 @@ function init() {
       console.log("Location has been chosen")
     }
     if(document.getElementById("location-bar").value !== 'Location'){
-        console.info(document.getElementById("location-bar").value)
+        console.info('User put in a location', document.getElementById('location-bar').value)
+        userSearchData.locationData.location = encodeURI(document.getElementById("location-bar").value.toLowerCase())
+        getBuisDataLocation()
+
     }
     
   }
@@ -70,8 +73,25 @@ function init() {
       headers: {
         Authorization: `Bearer ${apiKey}`
       }
-    }).then(displayData);
+    })
+    .then(displayData)
+    .catch(function (error){
+        console.info(error)
+    })
   }
+  function getBuisDataLocation () {
+    axios({
+      url: `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=${userSearchData.locationData.location}&term=${userSearchData.term}&limit=50`,
+      headers: {
+        Authorization: `Bearer ${apiKey}`
+      }
+    })
+    .then(displayData)
+    .catch(function (error){
+        console.info(error)
+    })
+  }
+  
   // Renders the results from YELP API
   function displayData(res) {
     console.info(userSearchData);
@@ -91,7 +111,6 @@ function init() {
                   <div class="info">
                     <h1>${res.name}</h1>
                     <p>${res.price}</p>
-
                                 <button type="button" id='modal-button' value='${
                                   res.id
                                 }'class="btn btn-primary" data-toggle="modal" data-target="#my-modal">
