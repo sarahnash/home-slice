@@ -8,9 +8,12 @@
     "url": "https://github.com/sarahnash/home-slice"
   },
   "dependencies": {
-    "standard": "12.0.1"
+    "mocha": "^5.2.0"
   },
   "scripts": {
-    "test": "standard"
+    "test": "mocha"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0"
   }
 }

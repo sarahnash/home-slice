@@ -8,7 +8,7 @@
       background-color: #3D4247;
   }
 
-  #cardListContainer {
+  #places {
     margin-top: 20px;
     margin-bottom: 20px;
     width: 100%;
@@ -22,8 +22,8 @@
   
   .card {
     margin: 10px;
-    width: 300px;
-    height: 300px;
+    width: 400px;
+    height: 400px;
     border-radius: 15px;
     padding: 1.5rem;darkgray
     background: white;
@@ -174,12 +174,12 @@ body {
     min-height: 50px;
 }
 
-.card{
+/* .card{
     width: 250px;
     height: fit-content;
     margin: 25px;
-    opacity: 1;
-}
+    opacity: 1; */
+/* } */
 #places{
     display: flex;
     flex-wrap: wrap;
@@ -241,12 +241,14 @@ body {
 
 footer {
     background-color: #3D4247;
-
+}
 /* Modal */
+
 
 .img_modal{
     width: 250px;
     height: 250px;
+    border-radius: 5%;
 }
 
 #waiting-for-food-modal{
@@ -258,4 +260,22 @@ footer {
     color: black;
     text-align: center;
     font-size: 24px;
+}
+
+.flex-modal{
+    display: flex;
+}
+#map {
+    height: 300px;
+    width: 1000px;
+}
+
+.modal-content{
+    height: 500px;
+    width: 2000px;
+}
+.signUp {
+    margin-top: 15%;
+    text-align: center;
+    color: white;
 }
