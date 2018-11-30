@@ -274,3 +274,8 @@ footer {
     height: 500px;
     width: 2000px;
 }
+.signUp {
+    margin-top: 15%;
+    text-align: center;
+    color: white;
+}
