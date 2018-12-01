@@ -149,14 +149,15 @@ function init() {
   function createModal(buis) {
     console.info(buis.data);
     let modalText = `    
-                <h3>${buis.data.location.address1} ${
+    <img class='img_modal' src='${buis.data.image_url}'>
+               <h3>${buis.data.location.address1} ${
       buis.data.location.address2
     } ${buis.data.location.ddress3}</h3>
                 <h3>${buis.data.location.city} ${
       buis.data.location.country
     }</h3>
                 <h4>${buis.data.phone}</h4>
-                <img class='img_modal' src='${buis.data.image_url}'>
+                
                 
                  `;
     userSearchData.locationData.lat;
@@ -204,4 +205,38 @@ function init() {
           </div>`;
   }
 
+}
+
+// SIGN IN
+
+firebase.auth().onAuthStateChanged(function(user) {
+	if (user) {
+		// User is signed in.
+        document.getElementById("logout-div").style.display = "initial";
+        document.getElementById("login-div").style.display = "none";
+        console.info(user);
+
+	} else {
+		// No user is signed in.
+        document.getElementById("logout-div").style.display = "none";
+        document.getElementById("login-div").style.display = "initial";
+        // console.info(‘User is not signed in’);
+
+	}
+})
+
+function login() {
+	var userEmail = document.getElementById('inputEmail').value
+	var userPass = document.getElementById('inputPassword').value
+	firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function(error) {
+		// Handle Errors here.
+		var errorCode = error.code;
+		var errorMessage = error.message;
+		window.alert("Error: " + errorMessage);
+		// ...
+	});
+}
+
+function logout() {
+	firebase.auth().signOut()
 }
