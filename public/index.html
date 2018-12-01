@@ -6,6 +6,9 @@
   <link href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase.js"></script>
+  <script src="https://cdn.firebase.com/libs/firebaseui/3.4.1/firebaseui.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.4.1/firebaseui.css" />
   
   <link href="styles/style.css" rel="stylesheet">
   <title>HomeSlice</title>
@@ -19,24 +22,18 @@
 
   <!-- NAV BAR SIGN IN/ SIGN UP -->
       <div class="dropdown">
-      <button aria-expanded="false" aria-haspopup="true" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" id="dropdownMenu2" type="button">Sign In or Sign Up</button> 
+        <button aria-expanded="false" aria-haspopup="true" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" id="dropdownMenu2" type="button">Sign In or Sign Up</button> 
 
-  <!--  drop down menu for Sign In/ Sign Up -->
-      <div aria-labelledby="dropdownMenu2" class="dropdown-menu dropdown-menu-right">
-          <form class="px-4 py-3">
-          <div class="form-group">
-              <label for="exampleDropdownFormEmail1">Email address</label> <input class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com" type="email">
-          <div class="form-group">
-              <label for="exampleDropdownFormPassword1">Password</label> <input class="form-control" id="exampleDropdownFormPassword1" placeholder="Password" type="password">
-          </div>
-          <div class="form-check">
-              <input class="form-check-input" id="dropdownCheck" type="checkbox"> <label class="form-check-label" for="dropdownCheck">Remember me</label>
-          </div><button class="btn btn-primary" type="submit">Sign in</button>
-          </form>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="signup.html" id="btn-id" >New around here? Sign up</a>
-          <a class="dropdown-item" href="#">Forgot password?</a>
-      </div>
+<!--  drop down menu for Sign In/ Sign Up -->
+        <div aria-labelledby="dropdownMenu2" class="dropdown-menu dropdown-menu-right">
+            <form class="px-4 py-3">
+            <div class="form-group">
+                <div id="firebaseui-auth-container"></div>
+        <button id='signout'>Signout</button>
+
+            </div>
+            </form>
+        </div>
       </div>
   </nav>
 
@@ -46,6 +43,7 @@
     <div class="mainImgTxt scale-up-center">
       WHATCHU WANT?<br>
     </div>
+
 
     <!-- SEARCH BAR -->
     <form id='search-form'>
@@ -142,7 +140,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src='scripts/maps.js'></script>
   <script src='scripts/index.js'></script>
-
+  <script src='scripts/signup.js'></script>
 <script>$('#btn-id').click(function(e){
   e.stopPropagation()
 });</script>
