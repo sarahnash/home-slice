@@ -16,14 +16,6 @@ const userSearchData = {
 document.addEventListener("DOMContentLoaded", init);
 
 function init() {
-    firebase.auth().onAuthStateChanged(function(user) {
-        if (user) {
-         console.info('User is signed in')
-         console.info(user)
-        } else {
-            console.info('User is not signed in')
-        }
-      })
   // Needed for the API to work
   // corseAPI()
   //The location in the DOM where the places will be rendered
@@ -148,21 +140,20 @@ function init() {
   //TODO LIST
   function createModal(buis) {
     console.info(buis.data);
+    let modalTitle = `
+                  <h1><b>${buis.data.name}</b></h1>
+    `
     let modalText = `    
-    <img class='img_modal' src='${buis.data.image_url}'>
-               <h3>${buis.data.location.address1} ${
-      buis.data.location.address2
-    } ${buis.data.location.ddress3}</h3>
-                <h3>${buis.data.location.city} ${
-      buis.data.location.country
-    }</h3>
+                <h3>${buis.data.location.address1} ${buis.data.location.address2}</h3>
+                <h3>${buis.data.location.city} ${buis.data.location.country}</h3>
                 <h4>${buis.data.phone}</h4>
-                
+                <img class='img_modal' src='${buis.data.image_url}'>
                 
                  `;
-    userSearchData.locationData.lat;
+    // userSearchData.locationData.lat;
     createMarkers([{lat: buis.data.coordinates.latitude, lng: buis.data.coordinates.longitude}])
     document.getElementById("the-modal-body").innerHTML = modalText;
+    document.getElementById("the-modal-title").innerHTML = modalTitle;
     document.getElementById("the-modal-title");
     console.info(userSearchData);
 
