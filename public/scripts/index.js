@@ -16,6 +16,14 @@ const userSearchData = {
 document.addEventListener("DOMContentLoaded", init);
 
 function init() {
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+         console.info('User is signed in')
+         console.info(user)
+        } else {
+            console.info('User is not signed in')
+        }
+      })
   // Needed for the API to work
   // corseAPI()
   //The location in the DOM where the places will be rendered
@@ -25,9 +33,7 @@ function init() {
   // Requesting to find the users location
   // if true in local storage, just run success, otherwise run goFindMe
 
-  document
-    .getElementById("search-form")
-    .addEventListener("submit", getUserInfo);
+  document.getElementById("search-form").addEventListener("submit", getUserInfo);
   places.addEventListener("click", placeClicked);
 
   //--------------------
