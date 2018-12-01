@@ -11,7 +11,7 @@ Houston.
 Travis is currently deprecating the .org version of their site and it appears the build button is no longer supported(?)
 Click it and see that we are PASSING!
 
-[![Build Status](https://travis-ci.com/sarahnash/home-slice.svg?branch=master)](https://travis-ci.com/sarahnash/home-slice)
+[![Build Status](https://travis-ci.org/sarahnash/home-slice.svg?branch=master)](https://travis-ci.org/sarahnash/home-slice)
 
 ## Project Description
 
