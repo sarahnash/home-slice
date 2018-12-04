@@ -184,11 +184,13 @@ function init () {
       // User is signed in.
       document.getElementById('logout-div').style.display = 'initial'
       document.getElementById('login-div').style.display = 'none'
+      document.getElementById('favorites-modal-button').style.display = 'initial'
       displayFavorites(user.displayName)
     } else {
       // No user is signed in.
       document.getElementById('logout-div').style.display = 'none'
       document.getElementById('login-div').style.display = 'initial'
+      document.getElementById('favorites-modal-button').style.display = 'none'
     }
   })
 
