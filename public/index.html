@@ -75,7 +75,7 @@
 
   <!-- SEARCH RESULTS CARDS WILL BE RENDERED BY JS -->
 
-  <div id='places'>
+  <div id='places'></div>>
 
   </div>
   
@@ -89,7 +89,7 @@
   <!-- Modal -->
   
   <div class="modal fade" id="my-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-right" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="the-modal-title">Modal title</h5>
@@ -103,14 +103,13 @@
           </div>
           <div id='map'></div>
         </div>
-        <div class="modal-footer">
+        <div class="modal-footer" id = 'modal-footer-id'>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Add to Favorites</button>
+          <button type="button" onclick='saveToFavorites()' id='favorites-modal-button'class="btn btn-primary">Add to Favorites</button>
         </div>
       </div>
     </div>
   </div>
-
 
 <!-- FOOTER -->
   <footer class="container py-5">
@@ -167,11 +166,7 @@
   <script src='scripts/index.js'></script>
 
 
-<script>$('.btn-id').click(function(e){
-
-  //<script src='scripts/signup.js'></script>
-  e.stopPropagation()
-});</script>
+<script>$('.btn-id').click(function(e){e.stopPropagation()})</script>
 
 
 <!-- -----------------MAPS SCRIPT------------------- -->
