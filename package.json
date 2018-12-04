@@ -1,6 +1,6 @@
 {
   "name": "home-slice",
-  "description": "Phase 1 Group Project",
+  "description": "[![Build Status](https://travis-ci.org/sarahnash/home-slice.svg?branch=master)](https://travis-ci.org/sarahnash/home-slice)",
   "version": "1.0.0",
   "license": "ISC",
   "repository": {
