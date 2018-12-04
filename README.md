@@ -8,8 +8,7 @@ Houston.
 [DigitalCrafts]:https://www.digitalcrafts.com/
 
 ## Travis
-Travis is currently deprecating the .org version of their site and it appears the build button is no longer supported(?)
-Click it and see that we are PASSING!
+Travis is currently deprecating the .org version of their site and it appears the build button is no longer supported(?).  Click to see the current status of our build.
 
 [![Build Status](https://travis-ci.org/sarahnash/home-slice.svg?branch=master)](https://travis-ci.org/sarahnash/home-slice)
 
