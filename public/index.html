@@ -103,9 +103,9 @@
           </div>
           <div id='map'></div>
         </div>
-        <div class="modal-footer">
+        <div class="modal-footer" id = 'modal-footer-id'>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Add to Favorites</button>
+          <button type="button" onclick='saveToFavorites()' id='favorites-modal-button'class="btn btn-primary">Add to Favorites</button>`
         </div>
       </div>
     </div>
@@ -167,11 +167,7 @@
   <script src='scripts/index.js'></script>
 
 
-<script>$('.btn-id').click(function(e){
-
-  //<script src='scripts/signup.js'></script>
-  e.stopPropagation()
-});</script>
+<script>$('.btn-id').click(function(e){e.stopPropagation()})</script>
 
 
 <!-- -----------------MAPS SCRIPT------------------- -->
