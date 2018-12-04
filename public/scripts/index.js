@@ -17,6 +17,7 @@ const userID = ''
 document.addEventListener('DOMContentLoaded', init)
 
 function init () {
+    window.location.hash = '#'
   document.getElementById('search-form').addEventListener('submit', getUserInfo)
   // Places where results will render
   const places = document.getElementById('places')
